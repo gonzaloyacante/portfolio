@@ -1,5 +1,5 @@
 export const AboutMeScreen = () => {
   return (
-    <div>AboutMeScreen</div>
+    <div className="min-vh-100">AboutMeScreen</div>
   )
 }

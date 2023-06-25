@@ -1,5 +1,7 @@
 export const PortfolioScreen = () => {
   return (
-    <div>PortfolioScreen</div>
+    <div className="min-vh-100" id="Portfolio">
+      PortfolioScreen
+    </div>
   )
 }

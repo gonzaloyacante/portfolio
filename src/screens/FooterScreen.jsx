@@ -1,5 +1,5 @@
 export const FooterScreen = () => {
   return (
-    <div>FooterScreen</div>
+    <div id="Footer">FooterScreen</div>
   )
 }

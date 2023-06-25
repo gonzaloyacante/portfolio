@@ -1,5 +1,5 @@
 export const SkillsScreen = () => {
   return (
-    <div>SkillsScreen</div>
+    <div className="min-vh-100" id="Skills">SkillsScreen</div>
   )
 }
