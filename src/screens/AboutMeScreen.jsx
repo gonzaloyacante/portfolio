@@ -9,7 +9,10 @@ export const AboutMeScreen = () => {
     <section id="AboutMe">
       <h2>Sobre mí</h2>
       <Row className="g-3">
-        <Col md={12} lg={4} className="d-flex justify-content-center align-items-center">
+        <Col
+          md={12}
+          lg={4}
+          className="d-flex justify-content-center align-items-center">
           <Image width={"80%"} src={programming} />
         </Col>
         <Col md={12} lg={8} className="text-center text-lg-start">

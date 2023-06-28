@@ -18,8 +18,12 @@ export const HomeScreen = () => {
       <p className="h4">Desarrollador Frontend</p>
 
       <Stack direction="horizontal" gap={3} className="mx-auto mt-3">
-        <Button variant="outline-primary">Descargar CV</Button>
-        <Button href="#AboutMe" variant="primary">Conóceme más</Button>
+        <Button variant="outline-primary">
+          Descargar CV
+        </Button>
+        <Button href="#AboutMe" variant="primary">
+          Conóceme más
+        </Button>
       </Stack>
       <Image width={200} src={astronaut_green} />
     </Container>

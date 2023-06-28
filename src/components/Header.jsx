@@ -24,7 +24,7 @@ export const Header = () => {
         </Navbar.Brand>
         <Stack className="flex-row flex-lg-row-reverse" direction="horizontal" gap={3}>
           <ThemeToggle />
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle className="border-0 shadow-sm bg-body-tertiary rounded" aria-controls="basic-navbar-nav" />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-lg`}
             aria-labelledby={`offcanvasNavbarLabel-expand-lg`}

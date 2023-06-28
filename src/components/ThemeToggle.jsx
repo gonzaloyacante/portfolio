@@ -11,7 +11,7 @@ export const ThemeToggle = () => {
   };
 
   return (
-    <label className="form-check-label">
+    <label className="form-check-label shadow-sm bg-body-tertiary">
       <input
         type="checkbox"
         className="form-check-input"
