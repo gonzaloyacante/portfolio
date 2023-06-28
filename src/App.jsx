@@ -3,10 +3,10 @@ import { Header } from './components/Header'
 
 import { HomeScreen } from './screens/HomeScreen'
 import { AboutMeScreen } from './screens/AboutMeScreen'
-import { SkillsScreen } from './screens/SkillsScreen'
-import { PortfolioScreen } from './screens/PortfolioScreen'
-import { ContactScreen } from './screens/ContactScreen'
-import { FooterScreen } from './screens/FooterScreen'
+// import { SkillsScreen } from './screens/SkillsScreen'
+// import { PortfolioScreen } from './screens/PortfolioScreen'
+// import { ContactScreen } from './screens/ContactScreen'
+// import { FooterScreen } from './screens/FooterScreen'
 
 function App() {
 
@@ -16,10 +16,10 @@ function App() {
       <Header />
       <HomeScreen />
       <AboutMeScreen />
-      <SkillsScreen />
+      {/* <SkillsScreen />
       <PortfolioScreen />
       <ContactScreen />
-      <FooterScreen />
+      <FooterScreen /> */}
     </div>
   )
 }
