@@ -11,7 +11,7 @@ import { AboutMeScreen } from './screens/AboutMeScreen'
 function App() {
 
   return (
-    <div className='container-fluid pt-5 m-0'>
+    <div className='container pt-5 mx-auto'>
       {/* <ScrollToTop /> */}
       <Header />
       <HomeScreen />

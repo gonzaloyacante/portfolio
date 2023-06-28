@@ -12,7 +12,7 @@ export const Header = () => {
   return (
     <Navbar fixed="top" expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="#Home">
           <img
             alt={logo}
             src={logo}
@@ -41,7 +41,7 @@ export const Header = () => {
                   <p className="6 d-none d-sm-block px-2 m-0">Home</p>
                   <p className="h2 d-md-none p-0 my-1">Home</p>
                 </Nav.Link>
-                <Nav.Link href="#AboutME">
+                <Nav.Link href="#AboutMe">
                   <p className="6 d-none d-sm-block px-2 m-0">Sobre mí</p>
                   <p className="h2 d-md-none p-0 my-1">Sobre mí</p>
                 </Nav.Link>
