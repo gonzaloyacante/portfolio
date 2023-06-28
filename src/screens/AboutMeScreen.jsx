@@ -8,14 +8,14 @@ export const AboutMeScreen = () => {
   return (
     <section id="AboutMe">
       <h2>Sobre mí</h2>
-      <Row className="g-3">
+      <Row className="g-3 mt-4">
         <Col
-          md={12}
-          lg={4}
+          md={{span: 10, offset: 1}}
+          lg={{span: 4, offset: 1}}
           className="d-flex justify-content-center align-items-center">
           <Image width={"80%"} src={programming} />
         </Col>
-        <Col md={12} lg={8} className="text-center text-lg-start">
+        <Col md={{span: 10, offset: 1}} lg={{span: 6, offset: 0}} className="text-center text-lg-start">
           <p className="text-primary">Hola, me alegro de tenerte aquí!</p>
           <p>
             Mi nombre es Gonzalo y soy un desarrollador de front-end con sede en
@@ -25,7 +25,7 @@ export const AboutMeScreen = () => {
               href="https://www.frontendmentor.io/"
               target="_blank"
               rel="noopener noreferrer"
-              className="link-underline-opacity-75 link-underline-primary">
+              className="link-underline-opacity-75 link-underline-primary link-primary">
               Frontend Mentor
             </a>{" "}
             con html y css.

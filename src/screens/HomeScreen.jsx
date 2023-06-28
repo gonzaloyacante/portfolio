@@ -12,12 +12,12 @@ export const HomeScreen = () => {
       fluid
       className="align-items-center justify-content-center d-flex flex-column min-vh-100">
       <p className="h5">Hola, yo soy</p>
-      <h1 className="text-primary h1">
+      <h1 className="text-primary fs-1">
         <strong>Gonzalo Yacante</strong>
       </h1>
       <p className="h4">Desarrollador Frontend</p>
 
-      <Stack direction="horizontal" gap={3} className="mx-auto mt-3">
+      <Stack direction="horizontal" gap={3} className="justify-content-center mt-3">
         <Button variant="outline-primary">
           Descargar CV
         </Button>
