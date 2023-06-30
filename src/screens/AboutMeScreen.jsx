@@ -10,17 +10,20 @@ export const AboutMeScreen = () => {
       <h2>Sobre mí</h2>
       <Row className="g-3 mt-4">
         <Col
-          md={{span: 10, offset: 1}}
-          lg={{span: 4, offset: 1}}
+          md={{ span: 10, offset: 1 }}
+          lg={{ span: 4, offset: 1 }}
           className="d-flex justify-content-center align-items-center">
           <Image width={"80%"} src={programming} />
         </Col>
-        <Col md={{span: 10, offset: 1}} lg={{span: 6, offset: 0}} className="text-center text-lg-start">
-          <p className="text-primary">Hola, me alegro de tenerte aquí!</p>
+        <Col
+          md={{ span: 10, offset: 1 }}
+          lg={{ span: 6, offset: 0 }}
+          className="text-center text-lg-start">
+          <p className="text-primary fs-5">Hola, me alegro de tenerte aquí!</p>
           <p>
-            Mi nombre es Gonzalo y soy un desarrollador de front-end con sede en
-            Lisboa, Portugal. Mi pasión por el desarrollo web comenzó en mayo
-            del 2020 cuando comencé a construir los retos propuestos en{" "}
+            Soy un desarrollador de front-end con sede en Lisboa, Portugal. Mi
+            pasión por el desarrollo web comenzó en mayo del 2020 cuando comencé
+            a construir los retos propuestos en{" "}
             <a
               href="https://www.frontendmentor.io/"
               target="_blank"

@@ -1,9 +1,8 @@
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import Stack from "react-bootstrap/Stack";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { CardSkills } from "../components/CardSkills";
+import { CertificationsModal } from "../components/CertificationsModal";
 
 export const SkillsScreen = () => {
   return (
@@ -11,7 +10,7 @@ export const SkillsScreen = () => {
       <h2>Habilidades</h2>
       <Container className="text-align-center mt-4">
         <Row>
-          <Col md={{span: 10, offset: 1}} lg={{span: 6, offset: 1}}>
+          <Col md={{ span: 10, offset: 1 }} lg={{ span: 6, offset: 1 }}>
             <p>
               Durante el paso del tiempo, he podido dominar algunas tecnologías,
               y esto ha sido posible gracias a la{" "}
@@ -21,12 +20,7 @@ export const SkillsScreen = () => {
               dejo acá las <span className="text-primary">certificaciones</span>{" "}
               que he obtenido, siéntete libre de verificar su fuente.
             </p>
-            <Stack direction="horizontal" gap={3} className="justify-content-center my-4">
-              <Button href="https://platzi.com/p/gonzaloyacante/" variant="outline-primary">Ver perfil</Button>
-              <Button href="#AboutMe" variant="primary">
-                Certificaciones
-              </Button>
-            </Stack>
+            <CertificationsModal />
             <p>
               Dejando esto de lado, soy capaz de diseñar y de crear sitios web
               estáticos o dinámicos que sean completamente{" "}
@@ -40,7 +34,7 @@ export const SkillsScreen = () => {
               <span className="text-primary">metodología Scrum</span>.
             </p>
           </Col>
-          <Col md={{span: 10, offset: 1}} lg={{span: 4, offset: 0}}>
+          <Col md={{ span: 10, offset: 1 }} lg={{ span: 4, offset: 0 }}>
             <CardSkills />
           </Col>
         </Row>
