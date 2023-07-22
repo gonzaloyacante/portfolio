@@ -12,11 +12,9 @@ import Card from "react-bootstrap/Card";
 import Dropdown from "react-bootstrap/Dropdown";
 
 export const CertificationsModal = () => {
-  const { certificationData, isLoading, error, uniquePlatforms } = useFetch(
-    `https://hmnophzqitefyttbinsw.supabase.co/rest/v1/certificates?select=*`
-  );
+  const { certificationData, isLoading, error, uniquePlatforms } = useFetch();
   // const [sortType, setSortType] = useState("date.desc");
-  const [platformFilter, setPlatformFilter] = useState("Todas");
+  const [platformFilter, setPlatformFilter] = useState("");
 
   const [showModal, setShowModal] = useState(false);
   const [showSecondModal, setShowSecondModal] = useState(false);
@@ -32,7 +30,12 @@ export const CertificationsModal = () => {
 
   return (
     <>
-      <Button onClick={handleShowModal}>Certificaciones</Button>
+      <Button
+        variant="outline-primary"
+        className="mb-3"
+        onClick={handleShowModal}>
+        Certificaciones
+      </Button>
 
       <Modal show={showModal} onHide={handleCloseModal} size="xl" centered>
         <Modal.Header closeButton>
@@ -85,59 +88,65 @@ export const CertificationsModal = () => {
               </Dropdown>
             </Col>
           </Row>
-          <Row className="g-3 text-center">
+          <Row className="g-3 d-flex justify-content-center align-items-center">
             {error && (
               <>
                 <p>Lo siento, ocurrió un error al obtener los certificados</p>
                 <p>Error: {error}</p>
               </>
             )}
-            {isLoading && (
+            {isLoading ? (
               <Spinner animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
               </Spinner>
+            ) : (
+              certificationData?.map((certification) => {
+                const date = new Date(certification.date);
+                const formattedDate = date
+                  .toLocaleDateString("es-ES", {
+                    month: "numeric",
+                    year: "numeric",
+                  })
+                  .replace(/\//g, "-");
+                return (
+                  <Col xs={6} md={4} lg={3} key={certification.id}>
+                    <Card
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleShowSecondModal(certification)}
+                      className="position-relative  text-center">
+                      <Card.Img
+                        variant="top"
+                        src={certification.image}
+                        alt={certification.name}
+                      />
+                      <Card.Body className="custom-card-body">
+                        <Card.Subtitle>{certification.tipo}</Card.Subtitle>
+                        <FaCircleInfo className="position-absolute bottom-0 end-0 me-2 mb-5" />
+                        <Card.Text className="custom-card-title">
+                          {certification.name}
+                        </Card.Text>
+                      </Card.Body>
+                      <Card.Footer className="d-flex justify-content-between w-100">
+                        <small className="text-muted text-start">
+                          {formattedDate}
+                        </small>
+                        <small className="text-muted text-end text-truncate w-50">
+                          {certification.platform}
+                        </small>
+                      </Card.Footer>
+                    </Card>
+                  </Col>
+                );
+              })
             )}
-            {certificationData?.map((certification) => {
-              const date = new Date(certification.date);
-              const formattedDate = date
-                .toLocaleDateString("es-ES", {
-                  month: "numeric",
-                  year: "numeric",
-                })
-                .replace(/\//g, "-");
-              return (
-                <Col xs={6} md={4} lg={3} key={certification.id}>
-                  <Card
-                    onClick={() => handleShowSecondModal(certification)}
-                    className="position-relative">
-                    <Card.Img
-                      variant="top"
-                      src={certification.image}
-                      alt={certification.name}
-                    />
-                    <Card.Body className="custom-card-body">
-                      <Card.Subtitle>{certification.tipo}</Card.Subtitle>
-                      <FaCircleInfo className="position-absolute bottom-0 end-0 me-2 mb-5" />
-                      <Card.Text className="custom-card-title">
-                        {certification.name}
-                      </Card.Text>
-                    </Card.Body>
-                    <Card.Footer className="d-flex justify-content-between w-100">
-                      <small className="text-muted text-start">
-                        {formattedDate}
-                      </small>
-                      <small className="text-muted text-end text-truncate w-50">
-                        {certification.platform}
-                      </small>
-                    </Card.Footer>
-                  </Card>
-                </Col>
-              );
-            })}
           </Row>
         </Modal.Body>
       </Modal>
-      <Modal show={showSecondModal} onHide={handleCloseSecondModal} size="lg" centered>
+      <Modal
+        show={showSecondModal}
+        onHide={handleCloseSecondModal}
+        size="lg"
+        centered>
         <Modal.Header closeButton>
           <Modal.Title>{selectedCertification?.name}</Modal.Title>
         </Modal.Header>

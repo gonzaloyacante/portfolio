@@ -10,7 +10,10 @@ export const SkillsScreen = () => {
       <h2>Habilidades</h2>
       <Container className="text-align-center mt-4">
         <Row>
-          <Col md={{ span: 10, offset: 1 }} lg={{ span: 6, offset: 1 }}>
+          <Col
+            className="d-flex flex-column justify-content-center align-items-center"
+            md={{ span: 10, offset: 1 }}
+            lg={{ span: 6, offset: 1 }}>
             <p>
               Durante el paso del tiempo, he podido dominar algunas tecnologías,
               y esto ha sido posible gracias a la{" "}
