@@ -40,7 +40,7 @@ export const CertificationsModal = () => {
       <Modal show={showModal} onHide={handleCloseModal} size="xl" centered>
         <Modal.Header closeButton>
           <Modal.Title>
-            Certificaciones - Total: {certificationData.length}
+            Certificaciones - Total: {certificationData?.length}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -77,7 +77,7 @@ export const CertificationsModal = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  {uniquePlatforms.map((platform) => (
+                  {uniquePlatforms?.map((platform) => (
                     <Dropdown.Item
                       key={platform}
                       onClick={() => setPlatformFilter(platform)}>

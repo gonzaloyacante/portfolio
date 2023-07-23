@@ -8,13 +8,13 @@ import {
   FaGitAlt,
   FaGithub,
   FaFigma,
+  FaChartSimple,
 } from "react-icons/fa6";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 export const CardSkills = () => {
-  // Define un array con los skills y sus iconos
   const skills = [
     { id: "html", name: "HTML 5", icon: <FaHtml5 /> },
     { id: "css", name: "CSS 3", icon: <FaCss3Alt /> },
@@ -26,9 +26,9 @@ export const CardSkills = () => {
     { id: "github", name: "GitHub", icon: <FaGithub /> },
     { id: "react-native", name: "React Native", icon: <FaReact /> },
     { id: "figma", name: "Figma", icon: <FaFigma /> },
+    { id: "seo", name: "SEO", icon: <FaChartSimple /> },
   ];
 
-  // Define un array con las cualidades
   const qualities = [
     { id: "organized", name: "Organizado" },
     { id: "assertive", name: "Asertivo" },
@@ -48,7 +48,7 @@ export const CardSkills = () => {
               xs={6}
               md={4}
               key={skill.id}>
-              <span className="p-0 mb-1 me-2 fs-2">{skill.icon}</span>{" "}
+              <span className="p-0 mb-2 me-2 fs-2">{skill.icon}</span>{" "}
               <p className="p-0 m-0 fs-6 fw-semibold">{skill.name}</p>
             </Col>
           ))}
