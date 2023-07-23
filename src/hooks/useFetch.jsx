@@ -21,7 +21,7 @@ export function useFetch() {
       .then((data) => setCertificationData(data))
       .catch((error) => setError(error))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [apiKey, apiToken, apiUrl]);
 
   const uniquePlatforms = [
     ...new Set(
