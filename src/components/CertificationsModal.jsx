@@ -13,8 +13,8 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 export const CertificationsModal = () => {
   const { certificationData, isLoading, error, uniquePlatforms } = useFetch();
-  // const [sortType, setSortType] = useState("date.desc");
-  const [platformFilter, setPlatformFilter] = useState("");
+  const [order, setOrder] = useState(["date.desc", "Fecha (más reciente)"]);
+  const [platformFilter, setPlatformFilter] = useState("Todas");
 
   const [showModal, setShowModal] = useState(false);
   const [showSecondModal, setShowSecondModal] = useState(false);
@@ -48,35 +48,60 @@ export const CertificationsModal = () => {
             <p className="p-0 m-0 mt-4 text-primary">
               Toca las imágenes para ver mas información
             </p>
-            <Col className="text-center">
+            <p>
+              <span>
+                <FaCircleInfo />
+              </span>
+              {"  "}
+              Las opciones de filtrar y ordenar estarán disponibles próximamente
+              {"  "}
+              <span>
+                <FaCircleInfo />
+              </span>
+            </p>
+            <Col className="p-0 m-0">
               <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  Ordenar
+                <Dropdown.Toggle variant="success" id="dropdown-basic" align="end">
+                  Ordenar: {order[1]}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  {/* <Dropdown.Item onClick={() => setSortType("date.desc")}>
-                    Fecha descendente
+                  <Dropdown.Item
+                    onClick={() =>
+                      setOrder(["date.desc", "Fecha (más reciente)"])
+                    }>
+                    Fecha (más reciente)
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setSortType("date.asc")}>
-                    Fecha ascendente
+                  <Dropdown.Item
+                    onClick={() =>
+                      setOrder(["date.asc", "Fecha (más antigua)"])
+                    }>
+                    Fecha (más antigua)
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setSortType("name.asc")}>
-                    Nombre ascendente
+                  <Dropdown.Item
+                    onClick={() => setOrder(["name.asc", "Nombre (A-Z)"])}>
+                    Nombre (A-Z)
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setSortType("name.desc")}>
-                    Nombre descendente
-                  </Dropdown.Item> */}
+                  <Dropdown.Item
+                    onClick={() => setOrder(["name.desc", "Nombre (Z-A)"])}>
+                    Nombre (Z-A)
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Col>
-            <Col>
+            <Col className="p-0 m-0">
               <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <Dropdown.Toggle variant="success" id="dropdown-basic" align="center">
                   Plataforma: {platformFilter}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
+                  <Dropdown.Item
+                    key="Todas"
+                    onClick={() => setPlatformFilter("Todas")}>
+                    Todas
+                  </Dropdown.Item>
+                  <Dropdown.Divider />
                   {uniquePlatforms?.map((platform) => (
                     <Dropdown.Item
                       key={platform}
