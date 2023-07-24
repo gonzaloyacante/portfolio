@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
-import astronaut_green from "../assets/astronaut_green.svg";
+import mello from "../assets/mello.svg";
 
 export const HomeScreen = () => {
   return (
@@ -19,7 +19,7 @@ export const HomeScreen = () => {
       <Button variant="outline-primary">
         Descargar CV
       </Button>
-      <Image width={200} src={astronaut_green} />
+      <Image width={300} src={mello} />
     </Container>
   );
 };
