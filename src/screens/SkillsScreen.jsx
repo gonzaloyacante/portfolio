@@ -18,8 +18,15 @@ export const SkillsScreen = () => {
               Durante el paso del tiempo, he podido dominar algunas tecnologías,
               y esto ha sido posible gracias a la{" "}
               <span className="text-primary">educación online</span>,
-              principalmente la que <span className="text-primary">Platzi</span>{" "}
-              ofrece. Puedes comprobar mi perfil en caso de que desees. También
+              principalmente la que{" "}
+              <a
+                href="https://platzi.com/p/gonzaloyacante/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline-opacity-75 link-underline-primary link-primary">
+                Platzi
+              </a>{" "}
+              ofrece, puedes comprobar mi perfil en caso de que desees. También
               dejo acá las <span className="text-primary">certificaciones</span>{" "}
               que he obtenido, siéntete libre de verificar su fuente.
             </p>
