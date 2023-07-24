@@ -9,6 +9,12 @@ import {
   FaGithub,
   FaFigma,
   FaChartSimple,
+  FaListCheck,
+  FaHand,
+  FaStopwatch,
+  FaLightbulb,
+  FaChartPie,
+  FaArrowsTurnToDots
 } from "react-icons/fa6";
 
 import Row from "react-bootstrap/Row";
@@ -30,17 +36,17 @@ export const CardSkills = () => {
   ];
 
   const qualities = [
-    { id: "organized", name: "Organizado" },
-    { id: "assertive", name: "Asertivo" },
-    { id: "disciplined", name: "Disciplinado" },
-    { id: "creative", name: "Creativo" },
-    { id: "productive", name: "Productivo" },
-    { id: "adaptable", name: "Adaptable" },
+    { id: "organized", name: "Organizado", icon: <FaListCheck /> },
+    { id: "assertive", name: "Asertivo", icon: <FaHand /> },
+    { id: "disciplined", name: "Disciplinado", icon: <FaStopwatch /> },
+    { id: "creative", name: "Creativo", icon: <FaLightbulb /> },
+    { id: "productive", name: "Productivo", icon: <FaChartPie /> },
+    { id: "adaptable", name: "Adaptable", icon: <FaArrowsTurnToDots /> },
   ];
 
   return (
-    <Row className="flex-column g-4">
-      <Col>
+    <Row className="flex-column g-0">
+      <Col className="mb-3">
         <Row className="gy-2">
           {skills.map((skill) => (
             <Col
@@ -54,10 +60,16 @@ export const CardSkills = () => {
           ))}
         </Row>
       </Col>
+      <hr />
       <Col>
-        <Row className="g-2">
+        <Row className="gy-2">
           {qualities.map((quality) => (
-            <Col xs={6} md={4} key={quality.id}>
+            <Col
+              className="d-flex align-items-center pe-0"
+              xs={6}
+              md={4}
+              key={quality.id}>
+              <span className="p-0 mb-2 me-2 fs-2">{quality.icon}</span>{" "}
               <p className="p-0 m-0 fs-6 fw-semibold">{quality.name}</p>
             </Col>
           ))}
