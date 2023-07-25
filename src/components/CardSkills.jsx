@@ -14,7 +14,8 @@ import {
   FaStopwatch,
   FaLightbulb,
   FaChartPie,
-  FaArrowsTurnToDots
+  FaArrowsTurnToDots,
+  FaDatabase
 } from "react-icons/fa6";
 
 import Row from "react-bootstrap/Row";
@@ -33,6 +34,7 @@ export const CardSkills = () => {
     { id: "react-native", name: "React Native", icon: <FaReact /> },
     { id: "figma", name: "Figma", icon: <FaFigma /> },
     { id: "seo", name: "SEO", icon: <FaChartSimple /> },
+    { id: "supabase", name: "SupaBase", icon: <FaDatabase /> },
   ];
 
   const qualities = [
