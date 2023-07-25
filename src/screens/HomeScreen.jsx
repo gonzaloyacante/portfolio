@@ -19,7 +19,7 @@ export const HomeScreen = () => {
       <Button variant="outline-primary">
         Descargar CV
       </Button>
-      <Image width={300} src={mello} />
+      <Image width={300} src={mello} alt="Imagen de Mello." />
     </Container>
   );
 };
