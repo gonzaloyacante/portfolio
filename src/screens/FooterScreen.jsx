@@ -26,7 +26,7 @@ export const FooterScreen = () => {
         className="d-flex justify-content-center"
         direction="horizontal"
         gap={3}>
-        <button
+        <a
           type="button"
           className="fs-2 m-0 p-0 link-secondary d-flex align-items-center
           justify-content-center btn"
@@ -34,7 +34,7 @@ export const FooterScreen = () => {
           target="_blank"
           rel="noopener noreferrer">
           <FaGithub className="text-primary-hover" />
-        </button>
+        </a>
         <span
           style={{ cursor: "pointer" }}
           ref={target}
@@ -50,7 +50,7 @@ export const FooterScreen = () => {
             </Tooltip>
           )}
         </Overlay>
-        <button
+        <a
           type="button"
           className="fs-2 m-0 p-0 d-flex align-items-center
           justify-content-center btn"
@@ -58,7 +58,7 @@ export const FooterScreen = () => {
           target="_blank"
           rel="noopener noreferrer">
           <FaLinkedin />
-        </button>
+        </a>
       </Stack>
       <p className="text-center">Gonzalo Yacante &copy; 2023</p>
     </footer>
