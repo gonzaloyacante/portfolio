@@ -27,8 +27,7 @@ export const ContactScreen = () => {
         validated={validated}
         onSubmit={handleSubmit}
         data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        target="hidden_iframe">
+        data-netlify-honeypot="bot-field">
         <Row>
           <Form.Group
             className="invisible visually-hidden"
@@ -81,10 +80,6 @@ export const ContactScreen = () => {
         </Row>
         <Button type="submit">Enviar</Button>
       </Form>
-      <iframe
-        name="hidden_iframe"
-        id="hidden_iframe"
-        className="visually-hidden"></iframe>
     </section>
   );
 };
