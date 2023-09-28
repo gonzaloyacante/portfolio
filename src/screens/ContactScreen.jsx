@@ -12,8 +12,6 @@ export const ContactScreen = () => {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-    } else {
-      form.setAttribute("onSubmit", "submit"); // Agregar el atributo onSubmit
     }
 
     setValidated(true);
@@ -26,10 +24,11 @@ export const ContactScreen = () => {
         method="post"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
+        onSubmit="submit"
+        onChange={handleSubmit}
         className="my-4 px-2"
         noValidate
-        validated={validated}
-        onSubmit={handleSubmit}>
+        validated={validated}>
         <Row className="flex-column">
           <input type="hidden" name="form-name" value="contact" />
           <Form.Group
@@ -67,7 +66,7 @@ export const ContactScreen = () => {
             controlId="validationCustom03">
             <Form.Label>Mensaje</Form.Label>
             <Form.Control
-              name="Message"
+              name="message"
               required
               as="textarea"
               placeholder="Explícame brevemente tu idea."
