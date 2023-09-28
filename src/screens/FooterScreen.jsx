@@ -23,12 +23,12 @@ export const FooterScreen = () => {
   return (
     <footer id="Footer">
       <Stack
-        className="d-flex justify-content-center"
+        className="d-flex justify-content-center mb-2"
         direction="horizontal"
         gap={3}>
         <a
           type="button"
-          className="fs-2 m-0 p-0 link-secondary d-flex align-items-center
+          className="fs-1 m-0 p-0 link-secondary d-flex align-items-center
           justify-content-center btn"
           href="https://github.com/gonzaloyacante"
           target="_blank"
@@ -39,7 +39,7 @@ export const FooterScreen = () => {
           style={{ cursor: "pointer" }}
           ref={target}
           onClick={handleEmailClick}>
-          <FaEnvelope className="fs-2 m-0 p-0 text-primary-hover" />
+          <FaEnvelope className="fs-1 m-0 p-0 text-primary-hover" />
         </span>
         <Overlay target={target.current} show={show} placement="top">
           {(props) => (
@@ -52,7 +52,7 @@ export const FooterScreen = () => {
         </Overlay>
         <a
           type="button"
-          className="fs-2 m-0 p-0 d-flex align-items-center
+          className="fs-1 m-0 p-0 d-flex align-items-center
           justify-content-center btn"
           href="https://www.linkedin.com/in/gonzaloyacante/"
           target="_blank"
