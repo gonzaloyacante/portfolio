@@ -26,14 +26,9 @@ export const ContactScreen = () => {
         noValidate
         validated={validated}
         onSubmit={handleSubmit}
-        data-netlify="true"
-        data-netlify-honeypot="bot-field">
+        data-netlify="true">
         <Row>
-          <Form.Group
-            className="invisible visually-hidden"
-            controlId="bot-field">
-            <Form.Control name="bot-field" />
-          </Form.Group>
+          <input type="hidden" name="contact" value="contact" />
           <Form.Group
             className="mb-3"
             as={Col}
