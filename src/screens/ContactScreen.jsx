@@ -12,6 +12,8 @@ export const ContactScreen = () => {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      form.setAttribute("onSubmit", "submit"); // Agregar el atributo onSubmit
     }
 
     setValidated(true);
@@ -21,18 +23,19 @@ export const ContactScreen = () => {
       <h2>Contáctame</h2>
       <Form
         name="contact"
-        method="POST"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
         className="my-4 px-2"
         noValidate
         validated={validated}
-        onSubmit={handleSubmit}
-        data-netlify="true">
-        <Row>
-          <input type="hidden" name="contact" value="contact" />
+        onSubmit={handleSubmit}>
+        <Row className="flex-column">
+          <input type="hidden" name="form-name" value="contact" />
           <Form.Group
             className="mb-3"
             as={Col}
-            md="4"
+            md={{ span: 6, offset: 3 }}
             controlId="validationCustom01">
             <Form.Label>Nombre completo</Form.Label>
             <Form.Control
@@ -46,7 +49,7 @@ export const ContactScreen = () => {
           <Form.Group
             className="mb-3"
             as={Col}
-            md="4"
+            md={{ span: 6, offset: 3 }}
             controlId="validationCustom02">
             <Form.Label>Correo electrónico</Form.Label>
             <Form.Control
@@ -60,7 +63,7 @@ export const ContactScreen = () => {
           <Form.Group
             className="mb-3"
             as={Col}
-            md="4"
+            md={{ span: 6, offset: 3 }}
             controlId="validationCustom03">
             <Form.Label>Mensaje</Form.Label>
             <Form.Control
@@ -68,12 +71,14 @@ export const ContactScreen = () => {
               required
               as="textarea"
               placeholder="Explícame brevemente tu idea."
-              rows={3}
+              rows={4}
             />
             <Form.Control.Feedback>Buena idea!</Form.Control.Feedback>
           </Form.Group>
+          <Form.Group className="mb-3" as={Col} md={{ span: 6, offset: 3 }}>
+            <Button type="submit">Enviar</Button>
+          </Form.Group>
         </Row>
-        <Button type="submit">Enviar</Button>
       </Form>
     </section>
   );
