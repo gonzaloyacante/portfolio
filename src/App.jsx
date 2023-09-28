@@ -5,7 +5,7 @@ import { HomeScreen } from "./screens/HomeScreen";
 import { AboutMeScreen } from "./screens/AboutMeScreen";
 import { SkillsScreen } from "./screens/SkillsScreen";
 import { PortfolioScreen } from "./screens/PortfolioScreen";
-// import { ContactScreen } from './screens/ContactScreen'
+import { ContactScreen } from './screens/ContactScreen'
 import { FooterScreen } from "./screens/FooterScreen";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <AboutMeScreen />
       <SkillsScreen />
       <PortfolioScreen />
-      {/* <ContactScreen /> */}
+      <ContactScreen />
       <FooterScreen />
     </div>
   );
