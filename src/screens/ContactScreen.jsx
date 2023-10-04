@@ -1,45 +1,35 @@
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-
 export const ContactScreen = () => {
   return (
     <section className="my-5" id="Skills">
       <h2>Contáctame</h2>
-      <Form
-        name="contact"
-        method="POST"
-        data-netlify="true"
-        onSubmit="submit"
-      >
-        <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-          <Form.Label column sm={2}>
-            Email
-          </Form.Label>
-          <Col sm={10}>
-            <Form.Control type="email" placeholder="Email" />
-          </Col>
-        </Form.Group>
-
-        <Form.Group
-          as={Row}
-          className="mb-3"
-          controlId="formHorizontalPassword">
-          <Form.Label column sm={2}>
+      <form name="contact" method="POST" data-netlify="true" onSubmit="submit">
+        <input type="hidden" name="form-name" value="contact" />
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
+            Email address
+            <input
+              name="email"
+              type="email"
+              className="form-control"
+              id="email"
+            />
+          </label>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">
             Password
-          </Form.Label>
-          <Col sm={10}>
-            <Form.Control type="password" placeholder="Password" />
-          </Col>
-        </Form.Group>
-
-        <Form.Group as={Row} className="mb-3">
-          <Col sm={{ span: 10, offset: 2 }}>
-            <Button type="submit">Sign in</Button>
-          </Col>
-        </Form.Group>
-      </Form>
+            <input
+              name="password"
+              type="password"
+              className="form-control"
+              id="password"
+            />
+          </label>
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
     </section>
   );
 };
