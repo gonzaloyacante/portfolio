@@ -4,8 +4,8 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import { HomeScreen } from "./screens/HomeScreen";
 import { AboutMeScreen } from "./screens/AboutMeScreen";
 import { SkillsScreen } from "./screens/SkillsScreen";
-import { PortfolioScreen } from "./screens/PortfolioScreen";
-import { ContactScreen } from './screens/ContactScreen'
+import { ProjectsSection } from "./screens/ProjectsSection";
+import { ContactScreen } from "./screens/ContactScreen";
 import { FooterScreen } from "./screens/FooterScreen";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <HomeScreen />
       <AboutMeScreen />
       <SkillsScreen />
-      <PortfolioScreen />
+      <ProjectsSection />
       <ContactScreen />
       <FooterScreen />
     </div>

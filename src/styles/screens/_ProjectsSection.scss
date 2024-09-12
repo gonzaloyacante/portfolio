@@ -1,0 +1,65 @@
+.project-card {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: none;
+  height: 100%;
+  transition: transform 0.3s ease;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: #16db65;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+  }
+
+  .folder-icon {
+    color: #16db65;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .action-icons {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    svg {
+      color: #ffffff;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #16db65;
+      }
+    }
+  }
+
+  .technologies {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    .technology-tag {
+      background-color: #2a2a2a;
+      color: #16db65;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #16db65;
+    }
+  }
+}

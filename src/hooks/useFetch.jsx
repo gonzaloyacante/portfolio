@@ -1,33 +1,31 @@
 import { useState, useEffect } from "react";
 
-export function useFetch() {
-  const apiUrl = import.meta.env.VITE_API_URL;
-  const apiKey = import.meta.env.VITE_API_KEY;
-  const apiToken = import.meta.env.VITE_API_TOKEN;
-
-  const [certificationData, setCertificationData] = useState([]);
+export function useFetch(url, options) {
+  const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setIsLoading(true);
-    fetch(apiUrl, {
-      headers: {
-        apikey: apiKey,
-        Authorization: `Bearer ${apiToken}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setCertificationData(data))
-      .catch((error) => setError(error))
-      .finally(() => setIsLoading(false));
-  }, [apiKey, apiToken, apiUrl]);
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch(url, options);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        setData(result);
+      } catch (e) {
+        setError(
+          e instanceof Error ? e : new Error("An unknown error occurred")
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  const uniquePlatforms = [
-    ...new Set(
-      certificationData.map((certification) => certification.platform)
-    ),
-  ];
+    fetchData();
+  }, [url, options]);
 
-  return { certificationData, isLoading, error, uniquePlatforms };
+  return { data, isLoading, error };
 }
