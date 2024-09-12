@@ -1,0 +1,6 @@
+[build]
+  command = "CI=false yarn build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "16.14.0"
