@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 
 import programming from "../assets/programming.svg";
 
-export const AboutMeScreen = () => {
+export const AboutMeSection = () => {
   return (
     <section id="AboutMe">
       <h2>Sobre mí</h2>

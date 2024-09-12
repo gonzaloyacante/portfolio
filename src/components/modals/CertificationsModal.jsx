@@ -1,6 +1,6 @@
 import { useState } from "react";
 // useMemo
-import { useFetch } from "../hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
 // import { FaCircleInfo } from "react-icons/fa6";
 import Spinner from "react-bootstrap/Spinner";
 import Modal from "react-bootstrap/Modal";
@@ -61,6 +61,7 @@ export const CertificationsModal = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {/* El resto del contenido del modal permanece igual */}
           <Row className="g-3 d-flex justify-content-center align-items-center">
             {error && (
               <>
@@ -90,7 +91,9 @@ export const CertificationsModal = () => {
                     <Card
                       style={{ cursor: "pointer" }}
                       onClick={() => handleShowSecondModal(certification)}
-                      className="position-relative  text-center"></Card>
+                      className="position-relative  text-center">
+                      {/* El contenido de la tarjeta permanece igual */}
+                    </Card>
                   </Col>
                 );
               })
@@ -102,7 +105,9 @@ export const CertificationsModal = () => {
         show={showSecondModal}
         onHide={handleCloseSecondModal}
         size="lg"
-        centered></Modal>
+        centered>
+        {/* El contenido del segundo modal permanece igual */}
+      </Modal>
     </>
   );
 };

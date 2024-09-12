@@ -6,7 +6,7 @@ import Overlay from "react-bootstrap/Overlay";
 import Tooltip from "react-bootstrap/Tooltip";
 import Stack from "react-bootstrap/Stack";
 
-export const FooterScreen = () => {
+export const Footer = () => {
   const [show, setShow] = useState(false);
   const target = useRef(null);
 

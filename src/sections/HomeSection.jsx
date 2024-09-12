@@ -4,7 +4,7 @@ import Image from "react-bootstrap/Image";
 
 import astronaut from "../assets/astronaut.svg";
 
-export const HomeScreen = () => {
+export const HomeSection = () => {
   return (
     <Container
       id="Home"

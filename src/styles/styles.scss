@@ -4,9 +4,10 @@
 @import "bootstrap/scss/bootstrap";
 
 // Components.
-@import "./components/scrollToTop";
-@import "./components/themeToggle";
-@import "./components/certificatedModal";
+@import "./components/ScrollToTop";
+@import "./components/ThemeToggle";
+@import "./components/CertificatedModal";
 
-// Screens.
-@import "./screens/HomeScreen";
+// Sections.
+@import "./sections/HomeSection";
+@import "./sections/ProjectsSection";

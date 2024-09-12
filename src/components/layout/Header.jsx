@@ -4,9 +4,9 @@ import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Stack from "react-bootstrap/Stack";
 
-import { ThemeToggle } from './ThemeToggle'
+import { ThemeToggle } from "../ui/ThemeToggle";
 
-import logo from "../assets/code.png";
+import logo from "../../assets/code.png";
 
 export const Header = () => {
   return (
@@ -22,14 +22,19 @@ export const Header = () => {
           />{" "}
           GY
         </Navbar.Brand>
-        <Stack className="flex-row flex-lg-row-reverse" direction="horizontal" gap={3}>
+        <Stack
+          className="flex-row flex-lg-row-reverse"
+          direction="horizontal"
+          gap={3}>
           <ThemeToggle />
-          <Navbar.Toggle className="border-0 shadow-sm bg-body-tertiary rounded" aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle
+            className="border-0 shadow-sm bg-body-tertiary rounded"
+            aria-controls="basic-navbar-nav"
+          />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-lg`}
             aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
-            placement="end"
-          >
+            placement="end">
             <Offcanvas.Header className="w-100 px-4" closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
                 <p className="h1 p-0 m-0">Menú</p>

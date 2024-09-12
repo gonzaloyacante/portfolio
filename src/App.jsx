@@ -1,24 +1,24 @@
-import { Header } from "./components/Header";
-import { ScrollToTop } from "./components/ScrollToTop";
+import { Header } from "./components/layout/Header";
+import { ScrollToTop } from "./components/ui/ScrollToTop";
 
-import { HomeScreen } from "./screens/HomeScreen";
-import { AboutMeScreen } from "./screens/AboutMeScreen";
-import { SkillsScreen } from "./screens/SkillsScreen";
-import { ProjectsSection } from "./screens/ProjectsSection";
-import { ContactScreen } from "./screens/ContactScreen";
-import { FooterScreen } from "./screens/FooterScreen";
+import { HomeSection } from "./sections/HomeSection";
+import { AboutMeSection } from "./sections/AboutMeSection";
+import { SkillsSection } from "./sections/SkillsSection";
+import { ProjectsSection } from "./sections/ProjectsSection";
+import { ContactSection } from "./sections/ContactSection";
+import { Footer } from "./components/layout/Footer";
 
 function App() {
   return (
     <div className="container pt-5 mx-auto">
       <Header />
       <ScrollToTop />
-      <HomeScreen />
-      <AboutMeScreen />
-      <SkillsScreen />
+      <HomeSection />
+      <AboutMeSection />
+      <SkillsSection />
       <ProjectsSection />
-      <ContactScreen />
-      <FooterScreen />
+      <ContactSection />
+      <Footer />
     </div>
   );
 }

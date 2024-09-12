@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
-export const ContactScreen = () => {
+export const ContactSection = () => {
   const [validated, setValidated] = useState(false);
 
   const handleChange = () => {
