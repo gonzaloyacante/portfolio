@@ -1,7 +1,7 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { CardSkills } from "../components/ui/CardSkills";
-import { CertificationsModal } from "../components/modals/CertificationsModal";
+// import { CertificationsModal } from "../components/modals/CertificationsModal";
 
 export const SkillsSection = () => {
   return (
@@ -28,7 +28,7 @@ export const SkillsSection = () => {
             dejo acá las <span className="text-primary">certificaciones</span>{" "}
             que he obtenido, siéntete libre de verificar su fuente.
           </p>
-          <CertificationsModal />
+          {/* <CertificationsModal /> */}
           <p>
             Dejando esto de lado, soy capaz de diseñar y de crear sitios web
             estáticos o dinámicos que sean completamente{" "}
