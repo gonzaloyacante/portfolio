@@ -1,9 +1,10 @@
 .project-card {
-  background-color: #1e1e1e;
+  // background-color: #1e1e1e;
   color: #ffffff;
   border: none;
   height: 100%;
   transition: transform 0.3s ease;
+  border: 1px solid $primary-color;
 
   &:hover {
     transform: translateY(-5px);
@@ -44,10 +45,8 @@
   }
 
   .technologies {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
     display: flex;
+    justify-content: end;
     flex-wrap: wrap;
 
     .technology-tag {

@@ -1,3 +1,5 @@
+import Container from "react-bootstrap/Container";
+
 import { Header } from "./components/layout/Header";
 import { ScrollToTop } from "./components/ui/ScrollToTop";
 
@@ -10,7 +12,7 @@ import { Footer } from "./components/layout/Footer";
 
 function App() {
   return (
-    <div className="container pt-5 mx-auto">
+    <Container className="pt-5 mx-auto">
       <Header />
       <ScrollToTop />
       <HomeSection />
@@ -19,7 +21,7 @@ function App() {
       <ProjectsSection />
       <ContactSection />
       <Footer />
-    </div>
+    </Container>
   );
 }
 
