@@ -14,7 +14,6 @@ export const Footer = () => {
     navigator.clipboard.writeText("gyacante9@gmail.com");
     setShow(true);
 
-    // Después de 5 segundos, oculta el mensaje de tooltip
     setTimeout(() => {
       setShow(false);
     }, 3000);
@@ -60,7 +59,7 @@ export const Footer = () => {
           <FaLinkedin />
         </a>
       </Stack>
-      <p className="text-center">Gonzalo Yacante &copy; 2023</p>
+      <p className="text-center">Gonzalo Yacante &copy; 2024</p>
     </footer>
   );
 };

@@ -13,31 +13,32 @@ export const SkillsSection = () => {
           md={{ span: 10, offset: 1 }}
           lg={{ span: 6, offset: 1 }}>
           <p>
-            Durante el paso del tiempo, he podido dominar algunas tecnologías,
-            esto ha sido posible gracias a la{" "}
-            <span className="text-primary">educación online</span>,
-            principalmente la que{" "}
+            A lo largo del tiempo, he adquirido dominio en diversas tecnologías,
+            gracias a la <span className="text-primary">educación online</span>,
+            especialmente la ofrecida por{" "}
             <a
               href="https://platzi.com/p/gonzaloyacante/"
               target="_blank"
               rel="noopener noreferrer"
               className="link-underline-opacity-75 link-underline-primary link-primary">
               Platzi
-            </a>{" "}
-            ofrece, puedes comprobar mi perfil en caso de que desees. También
-            dejo acá las <span className="text-primary">certificaciones</span>{" "}
-            que he obtenido, siéntete libre de verificar su fuente.
+            </a>
+            . Puedes revisar mi perfil para más detalles. También incluyo aquí
+            las <span className="text-primary">certificaciones</span> que he
+            obtenido, las cuales puedes verificar.
           </p>
           {/* <CertificationsModal /> */}
           <p>
-            Dejando esto de lado, soy capaz de diseñar y de crear sitios web
-            estáticos o dinámicos que sean completamente{" "}
-            <span className="text-primary">responsivos</span> y amigables con el
-            usuario, puedo llevar el seguimiento de los proyectos mediante un{" "}
+            Además, tengo la capacidad de diseñar y desarrollar sitios web tanto{" "}
+            <span className="text-primary">estáticos</span> como{" "}
+            <span className="text-primary">dinámicos</span>, asegurando que sean
+            completamente <span className="text-primary">responsivos</span> y{" "}
+            <span className="text-primary">amigables para el usuario</span>. Soy
+            competente en el seguimiento de proyectos mediante un{" "}
             <span className="text-primary">
               sistema de control de versiones
-            </span>
-            , y además, estoy capacitado para trabajar colaborando con la{" "}
+            </span>{" "}
+            y estoy capacitado para trabajar en colaboración utilizando la{" "}
             <span className="text-primary">metodología Scrum</span>.
           </p>
         </Col>

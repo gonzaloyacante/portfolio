@@ -1,5 +1,5 @@
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
 import astronaut from "../assets/astronaut.svg";
@@ -16,10 +16,12 @@ export const HomeSection = () => {
       </h1>
       <p className="fs-4">Desarrollador Frontend</p>
 
-      <Button variant="outline-primary">
-        Descargar CV
-      </Button>
-      <Image className="img-astronaut" src={astronaut} alt="Imagen de astronauta." />
+      {/* <Button variant="outline-primary">Descargar CV</Button> */}
+      <Image
+        className="img-astronaut"
+        src={astronaut}
+        alt="Imagen de astronauta."
+      />
     </Container>
   );
 };

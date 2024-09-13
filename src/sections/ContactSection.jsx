@@ -16,8 +16,6 @@ export const ContactSection = () => {
       <Form
         name="contact"
         method="post"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
         onChange={handleChange}
         onSubmit="submit"
         className="my-4 px-2"

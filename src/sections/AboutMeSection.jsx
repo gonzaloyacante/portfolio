@@ -20,37 +20,42 @@ export const AboutMeSection = () => {
           lg={{ span: 6, offset: 1 }}
           className="d-flex flex-column justify-content-center align-items-center">
           <p className="text-primary fs-5 text-center">
-            Me alegro de tenerte aquí!
+            ¡Me alegro de tenerte aquí!
           </p>
           <p>
-            Soy un desarrollador de front-end con sede en{" "}
-            <span className="text-primary">Lisboa, Portugal</span>. Mi pasión
-            por el desarrollo web comenzó en mayo del 2020 cuando comencé a
-            construir los retos propuestos en{" "}
-            <a
-              href="https://www.frontendmentor.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-underline-opacity-75 link-underline-primary link-primary">
-              Frontend Mentor
-            </a>{" "}
-            con html y css.
+            Soy un desarrollador front-end con sede en{" "}
+            <span className="text-primary">Lisboa, Portugal</span>,
+            especializado en <span className="text-primary">React</span>. Mi
+            carrera en el desarrollo web comenzó en 2020, y desde entonces he
+            estado dedicándome a perfeccionar mis habilidades y a mantenerme al
+            día con las{" "}
+            <span className="text-primary">
+              últimas tendencias tecnológicas
+            </span>
+            .
           </p>
           <p>
-            Desde entonces, he estado avanzando y expandiendo constantemente mi
-            conocimiento en este campo. En octubre de 2020, sentí la necesidad
-            de profundizar en el desarrollo web, lo que me llevó a aprender js y
-            luego reactjs junto con otras tecnologías de diseño. Con cada
-            proyecto, me esfuerzo por crear una{" "}
-            <span className="text-primary">solución única y efectiva</span> al
-            tiempo que integro las últimas tecnologías web.
+            Mi enfoque se centra en crear{" "}
+            <span className="text-primary">
+              aplicaciones web dinámicas y eficientes
+            </span>{" "}
+            utilizando React y otras tecnologías modernas. Me apasiona resolver
+            <span className="text-primary"> problemas complejos </span> y
+            transformar ideas en{" "}
+            <span className="text-primary">
+              soluciones digitales innovadoras
+            </span>
+            .
           </p>
           <p>
-            Siempre estoy emocionado de <span className="text-primary">colaborar</span> con personas y equipos que
-            comparten mi <span className="text-primary">pasión</span> por crear experiencias web excepcionales.
+            Disfruto trabajando en equipo y colaborando con otros profesionales
+            para crear{" "}
+            <span className="text-primary">experiencias web excepcionales</span>{" "}
+            que no solo cumplen con los requisitos del cliente, sino que también
+            superan sus expectativas.
           </p>
           <p className="text-primary text-center">
-            ¡Gracias por tomarse el tiempo de visitar mi portafolio!
+            ¡Gracias por visitar mi portafolio!
           </p>
         </Col>
       </Row>

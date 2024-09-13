@@ -19,8 +19,7 @@ export const Header = () => {
             width="30"
             height="30"
             className="d-inline-block align-top"
-          />{" "}
-          GY
+          />
         </Navbar.Brand>
         <Stack
           className="flex-row flex-lg-row-reverse"
