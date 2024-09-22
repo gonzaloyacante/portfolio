@@ -1,5 +1,4 @@
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Row, Col } from "react-bootstrap";
 import { CardSkills } from "../components/ui/CardSkills";
 // import { CertificationsModal } from "../components/modals/CertificationsModal";
 

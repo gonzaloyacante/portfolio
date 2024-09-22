@@ -1,10 +1,7 @@
-import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa6";
-
 import { useState, useRef } from "react";
+import { Overlay, Tooltip, Stack } from "react-bootstrap";
 
-import Overlay from "react-bootstrap/Overlay";
-import Tooltip from "react-bootstrap/Tooltip";
-import Stack from "react-bootstrap/Stack";
+import { Linkedin, Github, Envelope } from "react-bootstrap-icons";
 
 export const Footer = () => {
   const [show, setShow] = useState(false);
@@ -32,13 +29,13 @@ export const Footer = () => {
           href="https://github.com/gonzaloyacante"
           target="_blank"
           rel="noopener noreferrer">
-          <FaGithub className="text-primary-hover" />
+          <Linkedin className="text-primary-hover" />
         </a>
         <span
           style={{ cursor: "pointer" }}
           ref={target}
           onClick={handleEmailClick}>
-          <FaEnvelope className="fs-1 m-0 p-0 text-primary-hover" />
+          <Envelope className="fs-1 m-0 p-0 text-primary-hover" />
         </span>
         <Overlay target={target.current} show={show} placement="top">
           {(props) => (
@@ -56,7 +53,7 @@ export const Footer = () => {
           href="https://www.linkedin.com/in/gonzaloyacante/"
           target="_blank"
           rel="noopener noreferrer">
-          <FaLinkedin />
+          <Github className="text-primary-hover" />
         </a>
       </Stack>
       <p className="text-center">Gonzalo Yacante &copy; 2024</p>

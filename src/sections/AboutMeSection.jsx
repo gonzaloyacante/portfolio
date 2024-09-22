@@ -1,8 +1,4 @@
-import Image from "react-bootstrap/Image";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-
-import programming from "../assets/programming.svg";
+import { Image, Col, Row } from "react-bootstrap";
 
 export const AboutMeSection = () => {
   return (
@@ -13,7 +9,11 @@ export const AboutMeSection = () => {
           md={{ span: 10, offset: 1 }}
           lg={{ span: 4, offset: 1 }}
           className="d-flex justify-content-center align-items-center">
-          <Image width={"80%"} src={programming} />
+          <Image
+            width={"80%"}
+            src="https://imgur.com/gK3qHm6.png"
+            alt="Imagen de un programador."
+          />
         </Col>
         <Col
           md={{ span: 10, offset: 1 }}

@@ -2,12 +2,7 @@ import { useState } from "react";
 // useMemo
 import { useFetch } from "../../hooks/useFetch";
 // import { FaCircleInfo } from "react-icons/fa6";
-import Spinner from "react-bootstrap/Spinner";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
+import { Spinner, Modal, Button, Row, Col, Card } from "react-bootstrap";
 // import Dropdown from "react-bootstrap/Dropdown";
 
 export const CertificationsModal = () => {

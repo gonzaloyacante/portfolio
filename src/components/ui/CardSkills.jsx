@@ -15,11 +15,10 @@ import {
   FaLightbulb,
   FaChartPie,
   FaArrowsTurnToDots,
-  FaDatabase
+  FaDatabase,
 } from "react-icons/fa6";
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Row, Col } from "react-bootstrap";
 
 export const CardSkills = () => {
   const skills = [

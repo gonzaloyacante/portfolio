@@ -11,10 +11,10 @@ export const ProjectsSection = () => {
     error,
   } = useFetch("https://api.github.com/users/gonzaloyacante/repos");
 
-  const [showMoreCount, setShowMoreCount] = useState(6); // Initial number to display
+  const [showMoreCount, setShowMoreCount] = useState(6);
 
   const handleShowMore = () => {
-    setShowMoreCount((prevCount) => Math.min(prevCount + 6, repos?.length)); // Update count with a limit
+    setShowMoreCount((prevCount) => Math.min(prevCount + 6, repos?.length));
   };
 
   if (isLoading) return <div className="text-white">Cargando proyectos...</div>;
@@ -55,7 +55,6 @@ export const ProjectsSection = () => {
             </Col>
           ))}
         </Row>
-        {/* Show "Show More" button only if there are more projects to display */}
         {showMoreCount < repos?.length && (
           <div className="text-center mt-4">
             <Button variant="primary" size="sm" onClick={handleShowMore}>

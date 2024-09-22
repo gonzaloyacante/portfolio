@@ -1,8 +1,5 @@
-import Container from "react-bootstrap/Container";
+import { Container, Image } from "react-bootstrap";
 // import Button from "react-bootstrap/Button";
-import Image from "react-bootstrap/Image";
-
-import astronaut from "../assets/astronaut.svg";
 
 export const HomeSection = () => {
   return (
@@ -19,7 +16,7 @@ export const HomeSection = () => {
       {/* <Button variant="outline-primary">Descargar CV</Button> */}
       <Image
         className="img-astronaut"
-        src={astronaut}
+        src="https://imgur.com/hJpXRh0.png"
         alt="Imagen de astronauta."
       />
     </Container>

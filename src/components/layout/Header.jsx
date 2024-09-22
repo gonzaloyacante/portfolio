@@ -1,24 +1,25 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import Stack from "react-bootstrap/Stack";
+import {
+  Container,
+  Nav,
+  Navbar,
+  Offcanvas,
+  Stack,
+  Image,
+} from "react-bootstrap";
 
 import { ThemeToggle } from "../ui/ThemeToggle";
-
-import logo from "../../assets/code.png";
 
 export const Header = () => {
   return (
     <Navbar fixed="top" expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="#Home">
-          <img
-            alt={logo}
-            src={logo}
+          <Image
+            className="d-inline-block align-top"
             width="30"
             height="30"
-            className="d-inline-block align-top"
+            src="https://imgur.com/zYhsUB2.png"
+            alt="Imagen de astronauta."
           />
         </Navbar.Brand>
         <Stack
