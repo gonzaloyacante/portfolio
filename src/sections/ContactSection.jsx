@@ -8,7 +8,7 @@ export const ContactSection = () => {
     setValidated(true);
   };
   return (
-    <section className="mt-5" id="Skills">
+    <section className="mt-5" id="Contact">
       <h2>Contáctame</h2>
       <Form
         name="contact"

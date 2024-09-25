@@ -1,17 +1,15 @@
 import { FaSun, FaMoon } from "react-icons/fa6";
-import { useState } from 'react'
+import PropTypes from "prop-types";
 
-export const ThemeToggle = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
-
+export const ThemeToggle = ({ isDarkTheme, setIsDarkTheme }) => {
   const handleToggle = () => {
     setIsDarkTheme(!isDarkTheme);
-    const html = document.querySelector('html');
-    html.setAttribute('data-bs-theme', isDarkTheme ? 'dark' : 'light');
+    const html = document.querySelector("html");
+    html.setAttribute("data-bs-theme", isDarkTheme ? "dark" : "light");
   };
 
   return (
-    <label className="form-check-label shadow-sm bg-body-tertiary">
+    <label className="form-check-label">
       <input
         type="checkbox"
         className="form-check-input"
@@ -23,4 +21,9 @@ export const ThemeToggle = () => {
       <span className="toggle"></span>
     </label>
   );
-}
+};
+
+ThemeToggle.propTypes = {
+  isDarkTheme: PropTypes.bool.isRequired,
+  setIsDarkTheme: PropTypes.func.isRequired,
+};

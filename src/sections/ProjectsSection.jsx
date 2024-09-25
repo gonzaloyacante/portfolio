@@ -27,10 +27,10 @@ export const ProjectsSection = () => {
         <Row xs={1} md={2} lg={3} className="g-4">
           {repos?.slice(0, showMoreCount).map((repo) => (
             <Col key={repo.id}>
-              <Card className="project-card">
-                <Card.Body>
-                  <Folder className="folder-icon" />
-                  <div className="action-icons">
+              <Card className="project-card h-100">
+                <Card.Header className="d-flex justify-content-between align-items-center">
+                  <Folder className="fs-4 text-primary" />
+                  <div className="action-icons fs-4 h-auto m-0 p-0">
                     <Github
                       onClick={() => window.open(repo.html_url, "_blank")}
                     />
@@ -40,8 +40,14 @@ export const ProjectsSection = () => {
                       }
                     />
                   </div>
-                  <Card.Title>{repo.name}</Card.Title>
-                  <Card.Text>{repo.description || "Sin descripción"}</Card.Text>
+                </Card.Header>
+                <Card.Body>
+                  <Card.Title className="text-primary">
+                    {repo.name}
+                  </Card.Title>
+                  <Card.Text className="m-0">
+                    {repo.description || "Sin descripción"}
+                  </Card.Text>
                   <div className="technologies">
                     {repo.topics &&
                       repo.topics.map((topic, index) => (

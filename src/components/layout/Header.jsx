@@ -6,12 +6,16 @@ import {
   Stack,
   Image,
 } from "react-bootstrap";
+import { List } from "react-bootstrap-icons";
 
+import { useState } from "react";
 import { ThemeToggle } from "../ui/ThemeToggle";
 
 export const Header = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
   return (
-    <Navbar fixed="top" expand="lg" className="bg-body-tertiary">
+    <Navbar fixed="top" expand="lg" className="bg-body">
       <Container>
         <Navbar.Brand href="#Home">
           <Image
@@ -19,18 +23,20 @@ export const Header = () => {
             width="30"
             height="30"
             src="https://imgur.com/zYhsUB2.png"
-            alt="Imagen de astronauta."
+            alt="Logo de la Web."
           />
         </Navbar.Brand>
         <Stack
           className="flex-row flex-lg-row-reverse"
           direction="horizontal"
           gap={3}>
-          <ThemeToggle />
-          <Navbar.Toggle
-            className="border-0 shadow-sm bg-body-tertiary rounded"
-            aria-controls="basic-navbar-nav"
+          <ThemeToggle
+            isDarkTheme={isDarkTheme}
+            setIsDarkTheme={setIsDarkTheme}
           />
+          <Navbar.Toggle className="border-0" aria-controls="basic-navbar-nav">
+            <List size={30} color={isDarkTheme ? "black" : "white"} />
+          </Navbar.Toggle>
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-lg`}
             aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
@@ -54,9 +60,9 @@ export const Header = () => {
                   <p className="6 d-none d-sm-block px-2 m-0">Habilidades</p>
                   <p className="h2 d-md-none p-0 my-1">Habilidades</p>
                 </Nav.Link>
-                <Nav.Link href="#Portfolio">
-                  <p className="6 d-none d-sm-block px-2 m-0">Portafolio</p>
-                  <p className="h2 d-md-none p-0 my-1">Portafolio</p>
+                <Nav.Link href="#Projects">
+                  <p className="6 d-none d-sm-block px-2 m-0">Proyectos</p>
+                  <p className="h2 d-md-none p-0 my-1">Proyectos</p>
                 </Nav.Link>
                 <Nav.Link href="#Contact">
                   <p className="6 d-none d-sm-block px-2 m-0">Contáctame</p>

@@ -4,7 +4,25 @@ $theme-colors: (
 );
 
 // _variables.scss
+// Colores personalizados para modo claro
 $primary-color: #16db65;
-$secondary-color: #1e1e1e;
-$text-color: #a0a0a0;
-$hover-color: lighten($primary-color, 10%);
+$secondary-color: #e8f0f8;
+$text-color: #333333;
+$hover-color: #14c058;
+$body-bg: #ebebeb;
+$body-color: $text-color;
+$border-color: #d0d7de;
+$navbar-light-color: #ebebeb;
+
+// Colores personalizados para modo oscuro
+$primary-color-dark: #16db65;
+$secondary-color-dark: #1a1a1a;
+$text-color-dark: #e0e0e0;
+$hover-color-dark: #14c058;
+$body-bg-dark: #1e1e1e;
+$body-color-dark: $text-color-dark;
+$border-color-dark: #2a2a2a;
+$navbar-dark-color: #1e1e1e;
+
+// Personalización adicional para elementos oscuros
+$body-emphasis-color-dark: #ffffff;

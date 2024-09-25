@@ -1,10 +1,6 @@
 .project-card {
-  // background-color: #1e1e1e;
-  color: #ffffff;
-  border: none;
-  height: 100%;
   transition: transform 0.3s ease;
-  border: 1px solid $primary-color;
+  border: 0.1rem solid $primary-color;
 
   &:hover {
     transform: translateY(-5px);
@@ -12,8 +8,6 @@
 
   .card-title {
     font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: $primary-color;
   }
 
   .card-text {
@@ -21,19 +15,8 @@
     color: #a0a0a0;
   }
 
-  .folder-icon {
-    color: $primary-color;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-
   .action-icons {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-
     svg {
-      color: #ffffff;
       margin-left: 0.5rem;
       cursor: pointer;
       transition: color 0.3s ease;
