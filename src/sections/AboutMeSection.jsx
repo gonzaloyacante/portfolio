@@ -1,14 +1,15 @@
 import { Image, Col, Row } from "react-bootstrap";
 
+import { Section } from "../components/layout/Section";
+
 export const AboutMeSection = () => {
   return (
-    <section id="AboutMe">
-      <h2>Sobre mí</h2>
-      <Row className="g-3 mt-4 px-2">
+    <Section title="Sobre mí" id="AboutMe">
+      <Row className="g-3 justify-content-center">
         <Col
           md={{ span: 10, offset: 1 }}
           lg={{ span: 4, offset: 1 }}
-          className="d-flex justify-content-center align-items-center">
+          className="d-flex justify-content-center align-items-center m-0">
           <Image
             width={"80%"}
             src="https://imgur.com/gK3qHm6.png"
@@ -59,6 +60,6 @@ export const AboutMeSection = () => {
           </p>
         </Col>
       </Row>
-    </section>
+    </Section>
   );
 };

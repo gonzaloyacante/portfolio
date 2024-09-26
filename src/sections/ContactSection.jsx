@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 
+import { Section } from "../components/layout/Section";
+
 export const ContactSection = () => {
   const [validated, setValidated] = useState(false);
 
@@ -8,17 +10,16 @@ export const ContactSection = () => {
     setValidated(true);
   };
   return (
-    <section className="mt-5" id="Contact">
-      <h2>Contáctame</h2>
+    <Section title="Contáctame" id="Contact">
       <Form
         name="contact"
         method="post"
         onChange={handleChange}
         onSubmit="submit"
-        className="my-4 px-2"
+        className="w-100"
         noValidate
         validated={validated}>
-        <Row className="flex-column">
+        <Row>
           <input type="hidden" name="form-name" value="contact" />
           <Form.Group
             className="mb-3"
@@ -70,7 +71,7 @@ export const ContactSection = () => {
             <Form.Control.Feedback>Buena idea!</Form.Control.Feedback>
           </Form.Group>
           <Col
-            className="mb-3"
+            className="mb-3 text-end"
             xs={{ span: 10, offset: 1 }}
             md={{ span: 8, offset: 2 }}
             lg={{ span: 6, offset: 3 }}>
@@ -78,6 +79,6 @@ export const ContactSection = () => {
           </Col>
         </Row>
       </Form>
-    </section>
+    </Section>
   );
 };

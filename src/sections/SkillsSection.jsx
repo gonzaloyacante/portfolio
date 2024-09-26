@@ -1,16 +1,13 @@
 import { Row, Col } from "react-bootstrap";
 import { CardSkills } from "../components/ui/CardSkills";
 // import { CertificationsModal } from "../components/modals/CertificationsModal";
+import { Section } from "../components/layout/Section";
 
 export const SkillsSection = () => {
   return (
-    <section className="my-5" id="Skills">
-      <h2>Habilidades</h2>
-      <Row className="mt-4 px-2">
-        <Col
-          className="d-flex flex-column justify-content-center align-items-center"
-          md={{ span: 10, offset: 1 }}
-          lg={{ span: 6, offset: 1 }}>
+    <Section title="Habilidades" id="Skills">
+      <Row className="justify-content-center">
+        <Col md={{ span: 10, offset: 1 }} lg={{ span: 6, offset: 1 }}>
           <p>
             A lo largo del tiempo, he adquirido dominio en diversas tecnologías,
             gracias a la <span className="text-primary">educación online</span>,
@@ -45,6 +42,6 @@ export const SkillsSection = () => {
           <CardSkills />
         </Col>
       </Row>
-    </section>
+    </Section>
   );
 };

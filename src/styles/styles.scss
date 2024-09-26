@@ -3,6 +3,9 @@
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+// Animations.
+@import "animate.css";
+
 // Components.
 @import "./components/scrollToTop";
 @import "./components/themeToggle";

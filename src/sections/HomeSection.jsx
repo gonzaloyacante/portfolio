@@ -1,12 +1,9 @@
-import { Container, Image } from "react-bootstrap";
-// import Button from "react-bootstrap/Button";
+import { Image } from "react-bootstrap";
+import { Section } from "../components/layout/Section";
 
 export const HomeSection = () => {
   return (
-    <Container
-      id="Home"
-      fluid
-      className="align-items-center justify-content-center d-flex flex-column min-vh-100">
+    <Section title="" className="m-0" id="Home">
       <p className="fs-5 m-1">Hola, yo soy</p>
       <h1 className="text-primary fs-1">
         <strong>Gonzalo Yacante</strong>
@@ -19,6 +16,6 @@ export const HomeSection = () => {
         src="https://imgur.com/hJpXRh0.png"
         alt="Imagen de astronauta."
       />
-    </Container>
+    </Section>
   );
 };

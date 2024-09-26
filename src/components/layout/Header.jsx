@@ -29,7 +29,7 @@ export const Header = () => {
         <Stack
           className="flex-row flex-lg-row-reverse"
           direction="horizontal"
-          gap={3}>
+          gap={2}>
           <ThemeToggle
             isDarkTheme={isDarkTheme}
             setIsDarkTheme={setIsDarkTheme}
@@ -49,27 +49,27 @@ export const Header = () => {
             <Offcanvas.Body className="w-100 h-100">
               <Nav className="align-items-center justify-content-end flex-grow-1">
                 <Nav.Link href="#Home">
-                  <p className="6 d-none d-sm-block px-2 m-0">Home</p>
+                  <p className="d-none d-sm-block px-2 m-0">Home</p>
                   <p className="h2 d-md-none p-0 my-1">Home</p>
                 </Nav.Link>
                 <Nav.Link href="#AboutMe">
-                  <p className="6 d-none d-sm-block px-2 m-0">Sobre mí</p>
+                  <p className="d-none d-sm-block px-2 m-0">Sobre mí</p>
                   <p className="h2 d-md-none p-0 my-1">Sobre mí</p>
                 </Nav.Link>
                 <Nav.Link href="#Skills">
-                  <p className="6 d-none d-sm-block px-2 m-0">Habilidades</p>
+                  <p className="d-none d-sm-block px-2 m-0">Habilidades</p>
                   <p className="h2 d-md-none p-0 my-1">Habilidades</p>
                 </Nav.Link>
                 <Nav.Link href="#Projects">
-                  <p className="6 d-none d-sm-block px-2 m-0">Proyectos</p>
+                  <p className="d-none d-sm-block px-2 m-0">Proyectos</p>
                   <p className="h2 d-md-none p-0 my-1">Proyectos</p>
                 </Nav.Link>
                 <Nav.Link href="#Contact">
-                  <p className="6 d-none d-sm-block px-2 m-0">Contáctame</p>
+                  <p className="d-none d-sm-block px-2 m-0">Contáctame</p>
                   <p className="h2 d-md-none p-0 my-1">Contáctame</p>
                 </Nav.Link>
                 <Nav.Link href="#Footer">
-                  <p className="6 d-none d-sm-block px-2 m-0">Redes Sociales</p>
+                  <p className="d-none d-sm-block px-2 m-0">Redes Sociales</p>
                   <p className="h2 d-md-none p-0 my-1">Redes Sociales</p>
                 </Nav.Link>
               </Nav>
