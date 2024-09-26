@@ -12,7 +12,7 @@ import { Footer } from "./components/layout/Footer";
 
 function App() {
   return (
-    <Container className="pt-5 mx-auto">
+    <Container className="mx-auto">
       <Header />
       <ScrollToTop />
       <HomeSection />
