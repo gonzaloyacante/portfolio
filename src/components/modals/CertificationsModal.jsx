@@ -6,9 +6,8 @@ import { Spinner, Modal, Button, Row, Col, Card } from "react-bootstrap";
 // import Dropdown from "react-bootstrap/Dropdown";
 
 export const CertificationsModal = () => {
-  const apiUrl = import.meta.env.VITE_API_URL;
-  const apiKey = import.meta.env.VITE_API_KEY;
-  const apiToken = import.meta.env.VITE_API_TOKEN;
+  const apiUrl = import.meta.env.VITE_CERTIFICATES_API_URL;
+  const apiKey = import.meta.env.VITE_CERTIFICATES_API_KEY;
 
   const {
     data: certifications,
@@ -17,7 +16,7 @@ export const CertificationsModal = () => {
   } = useFetch(apiUrl, {
     headers: {
       apikey: apiKey,
-      Authorization: `Bearer ${apiToken}`,
+      Authorization: `Bearer ${apiKey}`,
     },
   });
 

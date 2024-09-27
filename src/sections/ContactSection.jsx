@@ -1,21 +1,23 @@
 import { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { useForm } from "@formspree/react";
 
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { Section } from "../components/layout/Section";
 
 export const ContactSection = () => {
   const [validated, setValidated] = useState(false);
+  const [state, handleSubmit] = useForm(import.meta.env.VITE_FORMSPREE_ID);
 
   const handleChange = () => {
     setValidated(true);
   };
+
   return (
     <Section title="Contáctame" id="Contact">
       <Form
         name="contact"
-        method="post"
         onChange={handleChange}
-        onSubmit="submit"
+        onSubmit={handleSubmit}
         className="w-100"
         noValidate
         validated={validated}>
@@ -78,6 +80,13 @@ export const ContactSection = () => {
             <Button type="submit">Enviar</Button>
           </Col>
         </Row>
+        {state && state.submitting && <p>Enviando mensaje...</p>}
+        {state && state.succeeded && (
+          <p>¡Mensaje enviado! Gracias por contactarse.</p>
+        )}
+        {state && state.errors && (
+          <p>Hubo un error al enviar el mensaje. Inténtalo nuevamente.</p>
+        )}
       </Form>
     </Section>
   );
