@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useForm } from "@formspree/react";
 
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { ArrowRight, Check, ExclamationTriangle } from "react-bootstrap-icons";
+
+import { Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import { Section } from "../components/layout/Section";
 
 export const ContactSection = () => {
@@ -19,7 +21,6 @@ export const ContactSection = () => {
         onChange={handleChange}
         onSubmit={handleSubmit}
         className="w-100"
-        noValidate
         validated={validated}>
         <Row>
           <input type="hidden" name="form-name" value="contact" />
@@ -73,20 +74,41 @@ export const ContactSection = () => {
             <Form.Control.Feedback>Buena idea!</Form.Control.Feedback>
           </Form.Group>
           <Col
-            className="mb-3 text-end"
             xs={{ span: 10, offset: 1 }}
             md={{ span: 8, offset: 2 }}
             lg={{ span: 6, offset: 3 }}>
-            <Button type="submit">Enviar</Button>
+            <Row>
+              <Col
+                xs={{ span: 12, order: 2 }}
+                sm={{ span: 8, order: 1 }}
+                className="d-flex align-items-center">
+                {state && state.succeeded && (
+                  <p>
+                    ¡Mensaje enviado! <Check />
+                  </p>
+                )}
+                {state && state.errors && (
+                  <p>
+                    Error al enviar el mensaje. <ExclamationTriangle />
+                  </p>
+                )}
+              </Col>
+              <Col
+                xs={{ span: 12, order: 1 }}
+                sm={{ span: 4, order: 2 }}
+                className="mb-3 d-flex align-items-center justify-content-sm-end">
+                <Button variant="outline-primary" type="submit">
+                  {state.submitting ? "Enviando... " : "Enviar "}
+                  {state.submitting ? (
+                    <Spinner animation="border" size="sm" />
+                  ) : (
+                    <ArrowRight />
+                  )}
+                </Button>
+              </Col>
+            </Row>
           </Col>
         </Row>
-        {state && state.submitting && <p>Enviando mensaje...</p>}
-        {state && state.succeeded && (
-          <p>¡Mensaje enviado! Gracias por contactarse.</p>
-        )}
-        {state && state.errors && (
-          <p>Hubo un error al enviar el mensaje. Inténtalo nuevamente.</p>
-        )}
       </Form>
     </Section>
   );
