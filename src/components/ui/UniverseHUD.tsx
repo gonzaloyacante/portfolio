@@ -19,19 +19,7 @@ export default function UniverseHUD({
   onStopTts?: () => void;
 }) {
   const notifications = useUiStore((s) => s.notifications);
-  const connectionState = useUiStore((s) => s.connectionState);
-
-  // small notification list
-  const NotificationList: React.FC = () => (
-    <div style={{position:'absolute', right:12, top:12, display:'flex', flexDirection:'column', gap:8}}>
-      {notifications.slice(-3).map((n) => (
-        <div key={n.id} style={{background: n.level === 'error' ? '#fee2e2' : n.level === 'warn' ? '#fffbeb' : '#ecfeff', padding:8, borderRadius:6, boxShadow:'0 4px 10px rgba(2,6,23,0.08)'}}>
-          <div style={{fontSize:12, fontWeight:600}}>{n.level?.toUpperCase()}</div>
-          <div style={{fontSize:12}}>{n.message}</div>
-        </div>
-      ))}
-    </div>
-  );
+  
     const ThinkingDots: React.FC = () => {
     const [i, setI] = React.useState(0);
     React.useEffect(() => {

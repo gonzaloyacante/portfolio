@@ -11,8 +11,11 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@react-spring/three": "^10.0.3",
+    "@react-spring/web": "^10.0.3",
     "@react-three/drei": "^10.7.6",
     "@react-three/fiber": "^9.4.0",
+    "@react-three/rapier": "^2.2.0",
     "@tanstack/react-query": "^5.90.5",
     "framer-motion": "^12.23.24",
     "howler": "^2.2.4",
@@ -39,6 +42,6 @@
     "jest-environment-jsdom": "^30.2.0",
     "tailwindcss": "^4",
     "ts-jest": "^29.4.5",
-    "typescript": "^5"
+    "typescript": "5.9.3"
   }
 }
