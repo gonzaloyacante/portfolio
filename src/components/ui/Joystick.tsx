@@ -82,19 +82,22 @@ export default function Joystick() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [active]);
 
+    // Only render if it's a touch device (simple check)
+    // In a real app, you might want a more robust check or a context
+    // For now, we'll use CSS to hide on desktop, but we also want to avoid rendering if possible
+    // However, hydration mismatches can occur if we check window.ontouchstart during SSR/hydration
+    // So we render it but hide it with CSS.
+
     return (
         <div
             ref={containerRef}
-            className="absolute bottom-8 left-8 w-32 h-32 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 touch-none pointer-events-auto z-50 hidden md:hidden lg:hidden touch-device-only"
-            style={{ display: 'flex' }} // Force flex to center stick, but hidden via media query if needed. 
-        // Note: We'll use CSS to show/hide based on device, or just show it for now.
+            className="absolute bottom-8 left-8 w-32 h-32 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 touch-none pointer-events-auto z-50 flex items-center justify-center md:hidden lg:hidden"
         >
             <div
                 ref={stickRef}
                 className="absolute w-12 h-12 bg-cyan-500/80 rounded-full shadow-[0_0_15px_rgba(6,182,212,0.5)]"
                 style={{
-                    left: `calc(50% + ${position.x}px - 24px)`,
-                    top: `calc(50% + ${position.y}px - 24px)`,
+                    transform: `translate(${position.x}px, ${position.y}px)`,
                     transition: active ? 'none' : 'all 0.2s ease-out'
                 }}
             />

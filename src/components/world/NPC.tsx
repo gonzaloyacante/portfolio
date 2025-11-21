@@ -1,7 +1,5 @@
-"use client";
-
 import React, { useRef, useState } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { Billboard, Html } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 import * as THREE from "three";
@@ -10,6 +8,8 @@ import ChatInterface from "@/components/ui/ChatInterface";
 export default function NPC({ chatOpen, setChatOpen }: { chatOpen: boolean; setChatOpen: (v: boolean) => void }) {
     const ref = useRef<THREE.Group>(null);
     const [hover, setHover] = useState(false);
+    const [isGazing, setIsGazing] = useState(false);
+    const { camera, raycaster } = useThree();
 
     useFrame((state) => {
         if (ref.current) {
@@ -17,11 +17,22 @@ export default function NPC({ chatOpen, setChatOpen }: { chatOpen: boolean; setC
             ref.current.position.y = 2 + Math.sin(state.clock.elapsedTime) * 0.2;
             // Rotate slowly
             ref.current.rotation.y += 0.01;
+
+            // Gaze Detection
+            // Cast ray from center of screen (0,0)
+            raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+            const intersects = raycaster.intersectObjects(ref.current.children, true);
+
+            const isLooking = intersects.length > 0;
+            if (isLooking !== isGazing) {
+                setIsGazing(isLooking);
+                setHover(isLooking); // Sync hover state with gaze
+            }
         }
     });
 
     const { scale } = useSpring({
-        scale: hover ? 1.2 : 1,
+        scale: hover || isGazing ? 1.2 : 1,
         config: { tension: 300, friction: 10 },
     });
 
@@ -32,10 +43,10 @@ export default function NPC({ chatOpen, setChatOpen }: { chatOpen: boolean; setC
             scale={scale}
             onClick={(e) => {
                 e.stopPropagation();
-                setChatOpen(!chatOpen);
+                if (isGazing && !chatOpen) {
+                    setChatOpen(true);
+                }
             }}
-            onPointerOver={() => setHover(true)}
-            onPointerOut={() => setHover(false)}
         >
             {/* Core */}
             <mesh>
@@ -53,11 +64,11 @@ export default function NPC({ chatOpen, setChatOpen }: { chatOpen: boolean; setC
                 <meshStandardMaterial color="#00ffff" emissive="#00ffff" emissiveIntensity={1} />
             </mesh>
 
-            {/* Label */}
-            {!chatOpen && (
+            {/* Gaze Prompt */}
+            {!chatOpen && isGazing && (
                 <Html position={[0, 0.8, 0]} center distanceFactor={10}>
-                    <div className="bg-black/80 text-cyan-400 px-2 py-1 rounded border border-cyan-500 text-xs font-mono whitespace-nowrap pointer-events-none">
-                        AI ASSISTANT
+                    <div className="bg-black/80 text-cyan-400 px-3 py-2 rounded border border-cyan-500 text-sm font-mono whitespace-nowrap animate-pulse">
+                        [ CLICK TO INTERACT ]
                     </div>
                 </Html>
             )}

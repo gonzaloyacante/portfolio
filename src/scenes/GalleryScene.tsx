@@ -8,6 +8,7 @@ import Player from "@/components/world/Player";
 import ProjectWall from "@/components/world/ProjectWall";
 import NPC from "@/components/world/NPC";
 import SearchKiosk from "@/components/world/SearchKiosk";
+import AboutSection from "@/components/world/AboutSection";
 
 function Floor() {
     return (
@@ -91,6 +92,7 @@ export default function GalleryScene() {
                         <Walls />
                         <ProjectWall />
                         <SearchKiosk />
+                        <AboutSection />
                         <NPC chatOpen={chatOpen} setChatOpen={setChatOpen} />
                     </Physics>
                 </Suspense>

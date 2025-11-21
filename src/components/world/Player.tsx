@@ -110,7 +110,7 @@ export default function Player({ active = true }: { active?: boolean }) {
 
     return (
         <>
-            <RigidBody ref={rigidBody} colliders={false} mass={1} type="dynamic" position={[0, 5, 10]} enabledRotations={[false, false, false]}>
+            <RigidBody ref={rigidBody} colliders={false} mass={1} type="dynamic" position={[0, 5, 15]} enabledRotations={[false, false, false]}>
                 <CapsuleCollider args={[0.75, 0.5]} />
             </RigidBody>
             {active && <PointerLockControls />}
