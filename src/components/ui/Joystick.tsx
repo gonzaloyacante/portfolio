@@ -91,7 +91,7 @@ export default function Joystick() {
     return (
         <div
             ref={containerRef}
-            className="absolute bottom-8 left-8 w-32 h-32 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 touch-none pointer-events-auto z-50 flex items-center justify-center md:hidden lg:hidden"
+            className="absolute bottom-8 left-8 w-32 h-32 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 touch-none pointer-events-auto z-[9999] flex items-center justify-center md:hidden lg:hidden"
         >
             <div
                 ref={stickRef}

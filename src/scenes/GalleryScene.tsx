@@ -1,14 +1,27 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Physics, RigidBody } from "@react-three/rapier";
-import { Stars, Sparkles, Cloud } from "@react-three/drei";
+import { Stars, Sparkles, Cloud, Loader } from "@react-three/drei";
 import Player from "@/components/world/Player";
 import ProjectWall from "@/components/world/ProjectWall";
 import NPC from "@/components/world/NPC";
 import SearchKiosk from "@/components/world/SearchKiosk";
 import AboutSection from "@/components/world/AboutSection";
+import { useGameInteraction } from "@/hooks/useGameInteraction";
+
+function InteractionHandler() {
+    const { interact } = useGameInteraction();
+
+    useEffect(() => {
+        const handleInteract = () => interact();
+        window.addEventListener('gameInteract', handleInteract);
+        return () => window.removeEventListener('gameInteract', handleInteract);
+    }, [interact]);
+
+    return null;
+}
 
 function Floor() {
     return (
@@ -68,10 +81,12 @@ function Ceiling() {
 }
 
 export default function GalleryScene() {
-    const [chatOpen, setChatOpen] = React.useState(false);
+    const [chatOpen, setChatOpen] = useState(false);
+    const [isProjectExpanded, setIsProjectExpanded] = useState(false);
 
     return (
         <>
+            <Loader />
             <Canvas shadows camera={{ fov: 75 }}>
                 <Suspense fallback={null}>
                     {/* Futuristic Lighting */}
@@ -83,14 +98,17 @@ export default function GalleryScene() {
                     {/* Environment */}
                     <Stars radius={200} depth={50} count={10000} factor={6} saturation={0} fade speed={0.5} />
                     <Sparkles count={300} scale={60} size={3} speed={0.2} opacity={0.4} color="#00ffff" />
+
+                    {/* Interaction System */}
+                    <InteractionHandler />
                     <Cloud opacity={0.2} speed={0.1} bounds={[30, 5, 30]} segments={10} position={[0, 20, -20]} color="#101010" />
 
                     <Physics gravity={[0, -9.81, 0]}>
-                        <Player active={!chatOpen} />
+                        <Player active={!chatOpen && !isProjectExpanded} />
                         <Floor />
                         <Ceiling />
                         <Walls />
-                        <ProjectWall />
+                        <ProjectWall onExpandStateChange={setIsProjectExpanded} />
                         <SearchKiosk />
                         <AboutSection />
                         <NPC chatOpen={chatOpen} setChatOpen={setChatOpen} />

@@ -36,6 +36,26 @@ export default function NPC({ chatOpen, setChatOpen }: { chatOpen: boolean; setC
         config: { tension: 300, friction: 10 },
     });
 
+    const speak = (text: string) => {
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            // Try to find a robotic or futuristic voice
+            const voices = window.speechSynthesis.getVoices();
+            const futuristicVoice = voices.find(v => v.name.includes('Google US English') || v.name.includes('Microsoft David')) || voices[0];
+            utterance.voice = futuristicVoice;
+            utterance.pitch = 0.8; // Lower pitch for robot effect
+            utterance.rate = 1.1;
+            window.speechSynthesis.speak(utterance);
+        }
+    };
+
+    const handleInteract = () => {
+        if (!chatOpen) {
+            setChatOpen(true);
+            speak("Greetings, traveler. I am the guardian of this portfolio. How may I assist you?");
+        }
+    };
+
     return (
         <a.group
             ref={ref}
@@ -43,32 +63,44 @@ export default function NPC({ chatOpen, setChatOpen }: { chatOpen: boolean; setC
             scale={scale}
             onClick={(e) => {
                 e.stopPropagation();
-                if (isGazing && !chatOpen) {
-                    setChatOpen(true);
-                }
+                handleInteract();
             }}
+            userData={{ interactive: true, onClick: handleInteract }}
         >
-            {/* Core */}
+            {/* Core - Improved Visuals */}
             <mesh>
-                <sphereGeometry args={[0.3, 32, 32]} />
-                <meshStandardMaterial color="#00ffff" emissive="#00ffff" emissiveIntensity={2} />
+                <icosahedronGeometry args={[0.4, 0]} />
+                <meshStandardMaterial
+                    color="#00ffff"
+                    emissive="#00ffff"
+                    emissiveIntensity={2}
+                    wireframe
+                />
+            </mesh>
+            <mesh>
+                <sphereGeometry args={[0.25, 16, 16]} />
+                <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={1} />
             </mesh>
 
-            {/* Rings */}
+            {/* Floating Particles/Rings */}
             <mesh rotation={[Math.PI / 3, 0, 0]}>
-                <torusGeometry args={[0.5, 0.02, 16, 100]} />
+                <torusGeometry args={[0.6, 0.01, 16, 100]} />
                 <meshStandardMaterial color="#ff00ff" emissive="#ff00ff" emissiveIntensity={1} />
             </mesh>
             <mesh rotation={[-Math.PI / 3, 0, 0]}>
-                <torusGeometry args={[0.6, 0.02, 16, 100]} />
+                <torusGeometry args={[0.7, 0.01, 16, 100]} />
                 <meshStandardMaterial color="#00ffff" emissive="#00ffff" emissiveIntensity={1} />
+            </mesh>
+            <mesh rotation={[0, 0, Math.PI / 2]}>
+                <torusGeometry args={[0.8, 0.01, 16, 100]} />
+                <meshStandardMaterial color="#00ffff" emissive="#00ffff" emissiveIntensity={0.5} />
             </mesh>
 
             {/* Gaze Prompt */}
             {!chatOpen && isGazing && (
-                <Html position={[0, 0.8, 0]} center distanceFactor={10}>
+                <Html position={[0, 1, 0]} center distanceFactor={10}>
                     <div className="bg-black/80 text-cyan-400 px-3 py-2 rounded border border-cyan-500 text-sm font-mono whitespace-nowrap animate-pulse">
-                        [ CLICK TO INTERACT ]
+                        [ PRESS E TO INTERACT ]
                     </div>
                 </Html>
             )}

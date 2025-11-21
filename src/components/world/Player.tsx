@@ -36,17 +36,22 @@ export default function Player({ active = true }: { active?: boolean }) {
                     setMove((m) => ({ ...m, left: true }));
                     break;
                 case "KeyD":
-                case "ArrowRight":
+                case "ArrowRight": ""
                     setMove((m) => ({ ...m, right: true }));
                     break;
                 case "ShiftLeft":
                 case "ShiftRight":
                     setMove((m) => ({ ...m, sprint: true }));
                     break;
+                case "KeyE":
+                    // Trigger interaction event
+                    window.dispatchEvent(new CustomEvent('gameInteract'));
+                    break;
             }
         };
 
         const handleKeyUp = (e: KeyboardEvent) => {
+            if (!active) return;
             switch (e.code) {
                 case "KeyW":
                 case "ArrowUp":
@@ -79,6 +84,13 @@ export default function Player({ active = true }: { active?: boolean }) {
         };
     }, [active]);
 
+    // Reset movement when inactive
+    React.useEffect(() => {
+        if (!active) {
+            setMove({ forward: false, backward: false, left: false, right: false, sprint: false });
+        }
+    }, [active]);
+
     useFrame(() => {
         if (!rigidBody.current) return;
 
@@ -107,6 +119,59 @@ export default function Player({ active = true }: { active?: boolean }) {
         const translation = rigidBody.current.translation();
         camera.position.set(translation.x, translation.y + 1.6, translation.z);
     });
+
+    // Mobile Look Controls
+    React.useEffect(() => {
+        let isDragging = false;
+        let previousTouch: { x: number; y: number } | null = null;
+        const sensitivity = 0.005;
+
+        const handleTouchStart = (e: TouchEvent) => {
+            // Ignore if touching joystick (bottom left area)
+            const touch = e.touches[0];
+            if (touch.clientX < window.innerWidth / 2 && touch.clientY > window.innerHeight / 2) return;
+
+            isDragging = true;
+            previousTouch = { x: touch.clientX, y: touch.clientY };
+        };
+
+        const handleTouchMove = (e: TouchEvent) => {
+            if (!isDragging || !previousTouch) return;
+
+            const touch = e.touches[0];
+            const deltaX = touch.clientX - previousTouch.x;
+            const deltaY = touch.clientY - previousTouch.y;
+
+            // Rotate camera
+            const euler = new THREE.Euler(0, 0, 0, 'YXZ');
+            euler.setFromQuaternion(camera.quaternion);
+
+            euler.y -= deltaX * sensitivity;
+            euler.x -= deltaY * sensitivity;
+
+            // Clamp vertical rotation
+            euler.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, euler.x));
+
+            camera.quaternion.setFromEuler(euler);
+
+            previousTouch = { x: touch.clientX, y: touch.clientY };
+        };
+
+        const handleTouchEnd = () => {
+            isDragging = false;
+            previousTouch = null;
+        };
+
+        document.addEventListener('touchstart', handleTouchStart);
+        document.addEventListener('touchmove', handleTouchMove);
+        document.addEventListener('touchend', handleTouchEnd);
+
+        return () => {
+            document.removeEventListener('touchstart', handleTouchStart);
+            document.removeEventListener('touchmove', handleTouchMove);
+            document.removeEventListener('touchend', handleTouchEnd);
+        };
+    }, [camera]);
 
     return (
         <>

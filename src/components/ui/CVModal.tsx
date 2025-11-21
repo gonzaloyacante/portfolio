@@ -1,23 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import PDFViewer from "./PDFViewer";
 
 interface CVModalProps {
     onClose: () => void;
 }
 
 export default function CVModal({ onClose }: CVModalProps) {
+    const [selectedPDF, setSelectedPDF] = useState<{ url: string; title: string } | null>(null);
+
     const cvLinks = {
-        en: "/cv/Gonzalo_Yacante_CV_EN.pdf",
-        es: "/cv/Gonzalo_Yacante_CV_ES.pdf",
-        pt: "/cv/Gonzalo_Yacante_CV_PT.pdf",
+        en: { url: "/cv/Gonzalo_Yacante_CV_EN.pdf", title: "CV - English" },
+        es: { url: "/cv/Gonzalo_Yacante_CV_ES.pdf", title: "CV - Español" },
+        pt: { url: "/cv/Gonzalo_Yacante_CV_PT.pdf", title: "CV - Português" },
     };
 
     const openCV = (lang: 'en' | 'es' | 'pt') => {
-        // Open in new tab
-        window.open(cvLinks[lang], '_blank');
-        onClose();
+        setSelectedPDF(cvLinks[lang]);
     };
+
+    if (selectedPDF) {
+        return (
+            <PDFViewer
+                pdfUrl={selectedPDF.url}
+                title={selectedPDF.title}
+                onClose={() => {
+                    setSelectedPDF(null);
+                    onClose();
+                }}
+            />
+        );
+    }
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm">

@@ -4,6 +4,7 @@ import GalleryScene from "@/scenes/GalleryScene";
 import Joystick from "@/components/ui/Joystick";
 import FuturisticBrowser from "@/components/ui/FuturisticBrowser";
 import CVModal from "@/components/ui/CVModal";
+import Crosshair from "@/components/ui/Crosshair";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -47,6 +48,7 @@ export default function Home() {
       {showCVModal && (
         <CVModal onClose={() => setShowCVModal(false)} />
       )}
+      <Crosshair />
       <div className="absolute bottom-8 left-8 z-10 text-white/50 text-sm pointer-events-none">
         WASD / Arrows to move • Click to interact • ESC to unlock cursor
       </div>

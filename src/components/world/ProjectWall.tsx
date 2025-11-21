@@ -68,10 +68,15 @@ function ProjectCard({
 
     return (
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        <a.group ref={ref} position={position as any} rotation={rotation as any} scale={scale as any}
+        <a.group
+            ref={ref}
+            position={position as any}
+            rotation={rotation as any}
+            scale={scale as any}
             onClick={(e) => { e.stopPropagation(); onClick(project.id); }}
             onPointerOver={() => setHover(true)}
             onPointerOut={() => setHover(false)}
+            userData={{ interactive: true, onClick: () => onClick(project.id) }}
         >
             <mesh>
                 <boxGeometry args={[CARD_WIDTH, CARD_HEIGHT, 0.05]} />
@@ -148,7 +153,7 @@ function ProjectCard({
                                         e.stopPropagation();
                                         window.dispatchEvent(new CustomEvent('openBrowser', { detail: { url: project.url } }));
                                     }}
-                                    className="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded transition-all hover:scale-105 shadow-lg shadow-cyan-500/20 cursor-pointer pointer-events-auto"
+                                    className="bg-cyan-600 hover:bg-cyan-400 text-white px-4 py-2 rounded transition-all hover:scale-110 shadow-lg shadow-cyan-500/20 cursor-pointer pointer-events-auto hover:shadow-cyan-400/50"
                                 >
                                     VISIT
                                 </button>
@@ -160,23 +165,46 @@ function ProjectCard({
                                         e.stopPropagation();
                                         window.dispatchEvent(new CustomEvent('openBrowser', { detail: { url: project.github_url } }));
                                     }}
-                                    className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded transition-all hover:scale-105 border border-gray-600 cursor-pointer pointer-events-auto"
+                                    className="bg-gray-800 hover:bg-gray-600 text-white px-4 py-2 rounded transition-all hover:scale-110 border border-gray-600 cursor-pointer pointer-events-auto hover:border-white"
                                 >
                                     GITHUB
                                 </button>
                             )}
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    onClick(project.id); // Toggle close
+                                }}
+                                className="bg-red-900/80 hover:bg-red-700 text-white px-4 py-2 rounded transition-all hover:scale-110 border border-red-600 cursor-pointer pointer-events-auto hover:border-red-400"
+                            >
+                                CLOSE
+                            </button>
                         </div>
                     </div>
-                </Html>
-            )}
-        </a.group>
+                </Html >
+            )
+            }
+        </a.group >
     );
 }
 
-export default function ProjectWall() {
+export default function ProjectWall({ onExpandStateChange }: { onExpandStateChange?: (expanded: boolean) => void }) {
     const [projects, setProjects] = useState<Project[]>([]);
     const [expandedId, setExpandedId] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
+
+    // Listen for 'E' key to close if expanded
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.code === 'KeyE' && expandedId) {
+                setExpandedId(null);
+                if (onExpandStateChange) onExpandStateChange(false);
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [expandedId, onExpandStateChange]);
 
     useEffect(() => {
         const loadProjects = async () => {
@@ -193,7 +221,11 @@ export default function ProjectWall() {
     }, []);
 
     const handleCardClick = (id: string) => {
-        setExpandedId(expandedId === id ? null : id);
+        const newExpandedId = expandedId === id ? null : id;
+        setExpandedId(newExpandedId);
+        if (onExpandStateChange) {
+            onExpandStateChange(!!newExpandedId);
+        }
     };
 
     const rows: Project[][] = [];
@@ -203,22 +235,32 @@ export default function ProjectWall() {
 
     return (
         <group position={[0, 0, 0]}>
-            <Text
-                position={[0, 5, 10]}
-                rotation={[0, 0, 0]}
-                fontSize={2}
-                color="#00ffff"
-                anchorX="center"
-                anchorY="middle"
-                outlineWidth={0.1}
-                outlineColor="#000000"
-            >
-                PROJECTS
-            </Text>
+            {/* Header Title - Improved */}
+            <group position={[0, 8, -5]}>
+                <Text
+                    fontSize={1.5}
+                    color="#00ffff"
+                    anchorX="center"
+                    anchorY="middle"
+                    outlineWidth={0.05}
+                    outlineColor="#004444"
+                >
+                    PROJECT DATABASE
+                </Text>
+                <Text
+                    position={[0, -0.8, 0]}
+                    fontSize={0.4}
+                    color="#00aaaa"
+                    anchorX="center"
+                    anchorY="middle"
+                >
+                    SELECT A MODULE TO INSPECT
+                </Text>
+            </group>
 
             <mesh position={[0, 0.1, -8]} rotation={[-Math.PI / 2, 0, 0]}>
                 <ringGeometry args={[6, 10, 64]} />
-                <meshBasicMaterial color="#00ffff" transparent opacity={0.1} side={THREE.DoubleSide} />
+                <meshBasicMaterial color="#00ffff" transparent opacity={0.05} side={THREE.DoubleSide} />
             </mesh>
 
             {loading && (
@@ -229,7 +271,7 @@ export default function ProjectWall() {
                     anchorX="center"
                     anchorY="middle"
                 >
-                    LOADING PROJECTS...
+                    LOADING DATA STREAMS...
                 </Text>
             )}
 
