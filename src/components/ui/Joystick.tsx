@@ -91,16 +91,36 @@ export default function Joystick() {
     return (
         <div
             ref={containerRef}
-            className="absolute bottom-8 left-8 w-32 h-32 bg-white/10 rounded-full backdrop-blur-sm border border-white/20 touch-none pointer-events-auto z-[9999] flex items-center justify-center md:hidden lg:hidden"
+            className={`
+                absolute bottom-6 left-6 
+                w-36 h-36
+                bg-gradient-to-br from-gray-900/40 to-black/40 
+                rounded-full backdrop-blur-md 
+                border-2 ${active ? 'border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.6)]' : 'border-white/20'}
+                touch-none pointer-events-auto z-40 
+                flex items-center justify-center 
+                md:hidden lg:hidden
+                transition-all duration-200
+            `}
         >
             <div
                 ref={stickRef}
-                className="absolute w-12 h-12 bg-cyan-500/80 rounded-full shadow-[0_0_15px_rgba(6,182,212,0.5)]"
+                className={`
+                    absolute w-14 h-14 
+                    bg-gradient-to-br from-cyan-400 to-blue-600
+                    rounded-full 
+                    shadow-[0_0_20px_rgba(6,182,212,0.8)]
+                    border-2 border-cyan-300
+                    ${active ? 'scale-110' : 'scale-100'}
+                    transition-transform duration-100
+                `}
                 style={{
-                    transform: `translate(${position.x}px, ${position.y}px)`,
+                    transform: `translate(${position.x}px, ${position.y}px) ${active ? 'scale(1.1)' : 'scale(1)'}`,
                     transition: active ? 'none' : 'all 0.2s ease-out'
                 }}
             />
+            {/* Center dot indicator */}
+            <div className="w-2 h-2 bg-white/50 rounded-full absolute" />
         </div>
     );
 }

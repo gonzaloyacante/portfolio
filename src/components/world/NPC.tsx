@@ -49,8 +49,16 @@ export default function NPC({ chatOpen, setChatOpen }: { chatOpen: boolean; setC
         }
     };
 
+    // Use ref to avoid stale closure in callback
+    const chatOpenRef = useRef(chatOpen);
+    React.useEffect(() => {
+        chatOpenRef.current = chatOpen;
+    }, [chatOpen]);
+
     const handleInteract = () => {
-        if (!chatOpen) {
+        console.log("NPC Interact called. ChatOpen:", chatOpenRef.current);
+        // Only open if not already open
+        if (!chatOpenRef.current) {
             setChatOpen(true);
             speak("Greetings, traveler. I am the guardian of this portfolio. How may I assist you?");
         }
@@ -105,14 +113,23 @@ export default function NPC({ chatOpen, setChatOpen }: { chatOpen: boolean; setC
                 </Html>
             )}
 
-            {/* 3D Chat Interface */}
-            {chatOpen && (
-                <Billboard follow={true} lockX={false} lockY={false} lockZ={false}>
-                    <Html position={[1.5, 0, 0]} transform distanceFactor={4} occlude>
-                        <ChatInterface onClose={() => setChatOpen(false)} />
-                    </Html>
-                </Billboard>
-            )}
+            {/* 3D Chat Interface - Persistent & Spatial */}
+            <Billboard follow={true} lockX={false} lockY={false} lockZ={false}>
+                <Html
+                    position={[1.5, 0, 0]}
+                    transform
+                    distanceFactor={4}
+                    occlude
+                    style={{
+                        transition: 'opacity 0.5s',
+                        opacity: chatOpen ? 1 : 0,
+                        pointerEvents: chatOpen ? 'auto' : 'none',
+                        transform: `scale(${chatOpen ? 1 : 0.5})`,
+                    }}
+                >
+                    <ChatInterface onClose={() => setChatOpen(false)} />
+                </Html>
+            </Billboard>
         </a.group>
     );
 }
