@@ -119,6 +119,7 @@ export default function GalleryScene({ isBrowserOpen }: { isBrowserOpen?: boolea
 
     const handleStart = (mode: 'TOUR' | 'FREE') => {
         setGameStarted(true);
+        window.dispatchEvent(new CustomEvent('gameStart')); // Notify page.tsx
         if (mode === 'TOUR') {
             // Small delay to let scene load
             setTimeout(() => setChatOpen(true), 1000);

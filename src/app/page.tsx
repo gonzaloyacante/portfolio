@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [browserUrl, setBrowserUrl] = useState<string | null>(null);
   const [showCVModal, setShowCVModal] = useState(false);
+  const [gameStarted, setGameStarted] = useState(false);
 
   useEffect(() => {
     const handleOpenBrowser = (event: Event) => {
@@ -22,11 +23,17 @@ export default function Home() {
       setShowCVModal(true);
     };
 
+    const handleGameStart = () => {
+      setGameStarted(true);
+    };
+
     window.addEventListener('openBrowser', handleOpenBrowser);
     window.addEventListener('openCVModal', handleOpenCVModal);
+    window.addEventListener('gameStart', handleGameStart);
     return () => {
       window.removeEventListener('openBrowser', handleOpenBrowser);
       window.removeEventListener('openCVModal', handleOpenCVModal);
+      window.removeEventListener('gameStart', handleGameStart);
     };
   }, []);
 
@@ -36,7 +43,7 @@ export default function Home() {
         <GalleryScene isBrowserOpen={!!browserUrl} />
       </div>
       {/* Mobile Controls */}
-      <Joystick />
+      <Joystick disabled={!gameStarted} />
       <InteractButton />
       {browserUrl && (
         <FuturisticBrowser

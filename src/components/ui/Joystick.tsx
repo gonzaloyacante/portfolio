@@ -3,19 +3,20 @@
 import React, { useRef, useState, useEffect } from "react";
 import { inputState } from "@/utils/input";
 
-export default function Joystick() {
+export default function Joystick({ disabled = false }: { disabled?: boolean }) {
     const containerRef = useRef<HTMLDivElement>(null);
     const stickRef = useRef<HTMLDivElement>(null);
     const [active, setActive] = useState(false);
     const [position, setPosition] = useState({ x: 0, y: 0 });
 
     const handleStart = (clientX: number, clientY: number) => {
+        if (disabled) return; // Block if game hasn't started
         setActive(true);
         updatePosition(clientX, clientY);
     };
 
     const handleMove = (clientX: number, clientY: number) => {
-        if (!active) return;
+        if (!active || disabled) return;
         updatePosition(clientX, clientY);
     };
 

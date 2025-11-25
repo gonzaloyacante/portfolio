@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function InteractButton() {
     const [hasTarget, setHasTarget] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         const handleStateChange = (e: Event) => {
@@ -11,8 +12,18 @@ export default function InteractButton() {
             setHasTarget(customEvent.detail.hasTarget);
         };
 
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+        };
+
+        checkMobile();
         window.addEventListener('interactionStateChange', handleStateChange);
-        return () => window.removeEventListener('interactionStateChange', handleStateChange);
+        window.addEventListener('resize', checkMobile);
+
+        return () => {
+            window.removeEventListener('interactionStateChange', handleStateChange);
+            window.removeEventListener('resize', checkMobile);
+        };
     }, []);
 
     const handleInteract = () => {
@@ -41,7 +52,15 @@ export default function InteractButton() {
                 WebkitTapHighlightColor: 'transparent'
             }}
         >
-            <span className={hasTarget ? 'animate-pulse' : ''}>E</span>
+            {isMobile ? (
+                // Touch icon for mobile
+                <svg className={hasTarget ? 'animate-pulse' : ''} width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 3v12m0 0l4-4m-4 4L5 11"></path>
+                    <circle cx="9" cy="21" r="1" fill="currentColor"></circle>
+                </svg>
+            ) : (
+                <span className={hasTarget ? 'animate-pulse' : ''}>E</span>
+            )}
             {hasTarget && (
                 <div className="absolute inset-0 rounded-full bg-cyan-400/20 animate-ping" />
             )}
