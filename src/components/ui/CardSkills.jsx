@@ -15,8 +15,8 @@ import {
   FaLightbulb,
   FaChartPie,
   FaArrowsTurnToDots,
-  FaDatabase,
 } from "react-icons/fa6";
+import { SiFlutter } from "react-icons/si";
 
 import { Row, Col } from "react-bootstrap";
 
@@ -33,7 +33,7 @@ export const CardSkills = () => {
     { id: "react-native", name: "React Native", icon: <FaReact /> },
     { id: "figma", name: "Figma", icon: <FaFigma /> },
     { id: "seo", name: "SEO", icon: <FaChartSimple /> },
-    { id: "supabase", name: "SupaBase", icon: <FaDatabase /> },
+    { id: "flutter", name: "Flutter", icon: <SiFlutter /> },
   ];
 
   const qualities = [
